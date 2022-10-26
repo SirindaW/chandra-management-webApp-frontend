@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Button } from "@mui/material";
+import { AiOutlineMenu } from 'react-icons/ai';
+import muiStyles from "./muiStyles";
+import { useDispatch, useSelector } from "react-redux";
+
 import styles from "./styles";
 import homeicon from "../../images/nav/homeIcon.svg";
 import contentsicon from "../../images/nav/ContentsIcon.svg";
 import categoriesicon from "../../images/nav/CategoriesIcon.svg";
 import settingsicon from "../../images/nav/Settings.svg";
-import { Button } from "@mui/material";
-import muiStyles from "./muiStyles";
-import { useDispatch, useSelector } from "react-redux";
 import { select_page } from "../../reducers/currentpage";
 
-const Navbar = () => {
-  const currentpage = useSelector((state) => state.currentpage.value);
-  const dispatch = useDispatch();
-  console.log(currentpage === 'home')
+const Navbar = ({ setActiveMenu }) => {
+  // const currentpage = useSelector((state) => state.currentpage.value);
+  // const dispatch = useDispatch();
+  // console.log(currentpage === 'home')
+
+  useEffect(() => {
+    if (window.innerWidth <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [window.innerWidth]);
+
+  const handleActiveMenu = () => setActiveMenu((prev) => !prev);
 
   return (
-    <div className="flex justify-between items-center absolute top-0 left-0 sticky w-full h-[55px] sm:w-auto bg-primary">
-      <div className={`${styles.flextCenter} h-full`}>
+    <div className={`flex items-center justify-between w-full h-[55px] bg-primary pr-10 pl-2`}>
+      {/* <div className={`${styles.flextCenter} h-full`}>
         <Button
           variant="contained"
           disableElevation
@@ -57,10 +69,17 @@ const Navbar = () => {
           <img className={`${styles.icon}`} src={settingsicon} alt="settingsicon" />
           <p className={`${styles.navTextSize}`}>Settings</p>
         </Button>
+      </div> */}
+
+      {/* menu open close */}
+      <div>
+        <button type="button" onClick={handleActiveMenu} className="rounded-full p-2 hover:bg-secondary transition-all">
+          <AiOutlineMenu color='white' size={20} />
+        </button>
       </div>
 
       {/* Right Side / User */}
-      <div className={`${styles.flextCenter} h-full`}>
+      <div className={`${styles.flexCenter} h-full`}>
         <Button variant="contained" disableElevation sx={muiStyles.userInfo}>
           <img
             className="w-[30px] h-[30px] rounded-4xl mr-2"

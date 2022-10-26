@@ -1,5 +1,6 @@
 const styles = {
-    flextCenter: "flex justify-center items-center",
+    flexCenter: "flex justify-center items-center",
+    flexEnd: "flex justify-end items-center",
     navTextSize : "text-[14]",
     icon: "mr-1",
 };
