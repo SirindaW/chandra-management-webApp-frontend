@@ -1,4 +1,4 @@
-# Chandra Management WebApp Frontend
+# Chandra Management WebApp (Frontend)
 
 Software Architecture and Design KMITL Project
 
