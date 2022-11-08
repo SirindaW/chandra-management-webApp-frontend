@@ -1,9 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import currentpageReducer from './currentpage';
+import auth from './auth.js';
 
 export const store = configureStore({
   reducer: {
-    //combine all reducer
-    currentpage: currentpageReducer,
+    auth
   },
 });

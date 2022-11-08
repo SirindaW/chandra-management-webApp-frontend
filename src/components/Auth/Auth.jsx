@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { TextField, InputAdornment, IconButton, Button } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import PersonIcon from '@mui/icons-material/Person';
+import LockIcon from '@mui/icons-material/Lock';
 
 import styles from './styles.js';
 import { signin } from '../../actions/auth.js';
-import { chandra1, logoblack, usericon, lockicon } from '../../images/index.js';
+import { chandra1, logoblack } from '../../images/index.js';
 
 const initialState = { email: '', password: '' }
 
@@ -38,13 +40,13 @@ const Auth = () => {
                             <img src={logoblack} alt="chandra logo" className="object-contained w-[190px] caret-transparent" />
                         </div>
                         <form onSubmit={handleSubmit}>
-                            <div className="px-10">
+                            <div className="px-8">
                                 <div className={`${styles.flexBetween} mb-6`}>
-                                    <img src={usericon} alt="username icon" className={styles.icon} />
+                                    <PersonIcon fontSize='large' color='primary' sx={{ marginRight: '8px'}} />
                                     <TextField name="username" label="Username" type="username" onChange={handleChange} variant="outlined" required fullWidth autoFocus />
                                 </div>
                                 <div className={`${styles.flexBetween}`}>
-                                    <img src={lockicon} alt="lock icon" className={styles.icon} />
+                                    <LockIcon fontSize='large' color='primary' sx={{ marginRight: '8px'}} />
                                     <TextField name="password" label="Password" type={showPassword ? "text" : "password"} onChange={handleChange} variant="outlined" required fullWidth
                                         InputProps={{
                                             endAdornment: (
