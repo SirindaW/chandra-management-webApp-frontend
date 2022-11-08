@@ -13,6 +13,7 @@ export const THEME = createTheme({
         },
         secondary: {
           main: '#D4990D',
+          fade: '#e3b549',
         },
       },
  });
