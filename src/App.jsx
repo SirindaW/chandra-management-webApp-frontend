@@ -33,7 +33,7 @@ const App = () => {
                   <Route path={dashboardUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
                   <Route path={calendarUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
                   <Route path={reservationUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
-                  <Route path={housekeepUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
+                  <Route path={housekeepUrl} exact element={<IsLogin comp={<Housekeeping />}/>} />
                   <Route path={ratesUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
                   <Route path={guestsUrl} exact element={<IsLogin comp={<Dashboard />}/>} />
                   
