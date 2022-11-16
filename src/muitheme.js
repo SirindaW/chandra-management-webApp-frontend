@@ -17,5 +17,12 @@ export const THEME = createTheme({
         white: {
           main: '#FFFFFF',
         },
+        lightGray:{
+          main: '#D9D9D9'
+        },
+        lightGreen:{
+          main: '#27BE5A',
+          contrastText: '#fff'
+        },
       },
  });

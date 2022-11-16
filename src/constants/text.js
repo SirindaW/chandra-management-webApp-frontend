@@ -7,52 +7,45 @@ export const menu  = [
     { title: 'Housekeeping', path: `${housekeepUrl}`},
     { title: 'Rates', path: `${ratesUrl}`},
     { title: 'Guests', path: `${guestsUrl}`},
-];
-// export const reservationGrid = [
-//     {
-//       headerText: 'Image',
-//       template: gridOrderImage,
-//       textAlign: 'Center',
-//       width: '120',
-//     },
-//     {
-//       field: 'OrderItems',
-//       headerText: 'Item',
-//       width: '150',
-//       editType: 'dropdownedit',
-//       textAlign: 'Center',
-//     },
-//     { field: 'CustomerName',
-//       headerText: 'Customer Name',
-//       width: '150',
-//       textAlign: 'Center',
-//     },
-//     {
-//       field: 'TotalAmount',
-//       headerText: 'Total Amount',
-//       format: 'C2',
-//       textAlign: 'Center',
-//       editType: 'numericedit',
-//       width: '150',
-//     },
-//     {
-//       headerText: 'Status',
-//       template: gridOrderStatus,
-//       field: 'OrderItems',
-//       textAlign: 'Center',
-//       width: '120',
-//     },
-//     {
-//       field: 'OrderID',
-//       headerText: 'Order ID',
-//       width: '120',
-//       textAlign: 'Center',
-//     },
-  
-//     {
-//       field: 'Location',
-//       headerText: 'Location',
-//       width: '150',
-//       textAlign: 'Center',
-//     },
-//   ];
+]
+
+
+// House Keeping - Inspection page
+
+export const pageList = ["Inspection", "Housekeepers"];
+
+export const filterSelect = [
+    { 
+        label: "Room Type",
+        options: ["Nothing Selected"]
+    },
+    {
+        label: "Room status",
+        options: ["Nothing Selected"]
+    },
+    {
+        label: "Room Condition",
+        options: ["Nothing Selected"]
+    },
+    {
+        label: "Frontdeak status",
+        options: ["Nothing Selected"]
+    },
+    {
+        label: "Assigned to",
+        options: ["Nothing Selected"]
+    }
+]
+
+export const tableHeaderList = [
+    "ROOM",
+    "TYPE", 
+    "CONDITION", 
+    "ROOM STATUS", 
+    "ARRIVAL DATE", 
+    "DEPARTURE DATE",
+    "FRONTDESK STATUS",
+    "ASSIGNED TO",
+    "DO NOT DISTURB",
+    "COMMENTS",
+]
