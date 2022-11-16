@@ -45,7 +45,7 @@ const Housekeeper = () => {
 
   return (
     <>
-     <div class="flex flex-col p-[2rem] gap-[1.5rem] overflow-auto">
+    <div class="flex flex-col p-[2rem] gap-[1.5rem] overflow-auto">
       {open.index != null ? <div onClick={handleClose} class="z-10 absolute top-0 left-0 inline-block w-full h-full" ></div>:""}
       
       {addModal && <AddModal closeModal={setAddModal}/>}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles.js';
-import {conditions} from './text';
+import {filterSelect_Guest} from "../../constants/text";
 
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -90,7 +90,7 @@ const FilterBox = () => {
                     FILTER
                 </div>
                 <div className='border border-solid border-x-[#A7A5A5] p-2'>
-                        {conditions.map((condition) => (
+                        {filterSelect_Guest.map((condition) => (
                         MultipleSelectCheckmarks(condition.title,condition.items)
                     ))}
                     {/* <DateSelect /> */}
@@ -98,8 +98,8 @@ const FilterBox = () => {
                     { NativePickers('Check Out') }
                 </div>
                 <div className='text-right bg-[#D9D9D9] p-2 rounded-b-lg border border-solid border-[#A7A5A5]'>
-                    <button className={`${styles.button} bg-secondary hover:text-secondary hover:border-secondary`} >APPLY</button>
-                    <button className={`${styles.button} bg-[#9D9B9B] hover:text-primary hover:border-primary`} onClick = {handleClearClick}>CLEAR</button>
+                    <button className={`${styles.button} bg-secondary hover:text-secondary hover:inner-border-secondary`} >APPLY</button>
+                    <button className={`${styles.button} bg-[#9D9B9B] hover:text-primary hover:inner-border-primary`} onClick = {handleClearClick}>CLEAR</button>
                 </div>
             </div>
         </div>

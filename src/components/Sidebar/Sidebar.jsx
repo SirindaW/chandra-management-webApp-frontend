@@ -8,11 +8,11 @@ import { logo } from '../../images';
 const Sidebar = ({ activeMenu, setActiveMenu }) => {
 
     const handleCloseSideBar = () => {
-      if (activeMenu && window.innerWidth <= 900) {
+    if (activeMenu && window.innerWidth <= 900) {
         setActiveMenu(false);
-      }
+    }
     };
-  
+    
     return (
         <div className="transition-all h-screen w-[300px] flex-none sidebar bg-primary md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 pt-5 caret-transparent">
             <img src={logo} alt="chandra logo" className='mx-auto mb-6' />
