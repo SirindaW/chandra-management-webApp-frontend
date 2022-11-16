@@ -93,17 +93,17 @@ const Inspection = () => {
             </thead>
             <tbody>
               {InspDataMockup.map((data) => (
-                <tr>
-                  <th class="h-[65px]">{data.room}</th>
-                  <th class="h-[65px]">{data.condition}</th>
-                  <th class="h-[65px]">{data.roomStatus}</th>
-                  <th class="h-[65px]">{data.type}</th>
-                  <th class="h-[65px]">{data.arrivalData}</th>
-                  <th class="h-[65px]">{data.departureDate}</th>
-                  <th class="h-[65px]">{data.frontdeskStatus}</th>
-                  <th class="h-[65px]">{data.assignedTo}</th>
-                  <th class="h-[65px]">{data.donotDisturb}</th>
-                  <th class="h-[65px]">comments</th>
+                <tr class="text-center">
+                  <td class="h-[65px]">{data.room}</td>
+                  <td class="h-[65px]">{data.condition}</td>
+                  <td class="h-[65px]">{data.roomStatus}</td>
+                  <td class="h-[65px]">{data.type}</td>
+                  <td class="h-[65px]">{data.arrivalData}</td>
+                  <td class="h-[65px]">{data.departureDate}</td>
+                  <td class="h-[65px]">{data.frontdeskStatus}</td>
+                  <td class="h-[65px]">{data.assignedTo}</td>
+                  <td class="h-[65px]">{data.donotDisturb}</td>
+                  <td class="h-[65px]">comments</td>
                 </tr>
               ))}
             </tbody>

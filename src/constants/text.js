@@ -12,7 +12,7 @@ export const menu  = [
 
 // House Keeping - Inspection page
 
-export const pageList = ["Inspection", "Housekeeppers"];
+export const pageList = ["Inspection", "Housekeepers"];
 
 export const filterSelect = [
     { 

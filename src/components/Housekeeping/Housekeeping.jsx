@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { pageList } from "../../constants/text";
 import Inspection from "./Inspection";
+import Housekeeper from "./Housekeeper";
 
 const Housekeeping = () => {
   const defaultFilter = {
@@ -48,7 +49,7 @@ const Housekeeping = () => {
         ))}
       </div>
 
-      { page === "Inspection" ? <Inspection/> : ""}
+      { page === "Inspection" ? <Inspection/> : <Housekeeper/>}
 
     </>
   );
