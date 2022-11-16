@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './styles.js';
+import {conditions} from './text';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,7 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import {conditions} from './text';
+import TextField from '@mui/material/TextField';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -35,7 +37,7 @@ const MultipleSelectCheckmarks = (title,vals) => {
     
         return (
         <>
-            <FormControl sx={{ m: 1, width: 300 }}>
+            <FormControl sx={{ m: 1, width: 345 }}>
             <InputLabel id="demo-multiple-checkbox-label">{title}</InputLabel>
             <Select
                 labelId="demo-multiple-checkbox-label"
@@ -58,6 +60,24 @@ const MultipleSelectCheckmarks = (title,vals) => {
         </>
         );
     }    
+
+export  function NativePickers(val) {
+    const date = new Date();
+    const currentDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
+    return (
+        <TextField 
+            id="date"
+            label={val}
+            type="date"
+            defaultValue= {currentDate}
+            sx={{ m:1 ,width: 220 }}
+            InputLabelProps={{
+            shrink: true,
+            }}
+            />
+        );
+    }        
+
 const FilterBox = () => {
 //   const editing = { allowDeleting: true, allowEditing: true };
     const handleClearClick = () => {
@@ -69,13 +89,13 @@ const FilterBox = () => {
                 <div className='text-left font-semibold bg-[#D9D9D9] p-2 rounded-t-lg border border-solid border-[#A7A5A5]'>
                     FILTER
                 </div>
-                <div className='border border-solid border-x-[#A7A5A5] p-2 '>
-                    <div >
+                <div className='border border-solid border-x-[#A7A5A5] p-2'>
                         {conditions.map((condition) => (
                         MultipleSelectCheckmarks(condition.title,condition.items)
                     ))}
-                    </div>
-                    
+                    {/* <DateSelect /> */}
+                    { NativePickers('Check In') }
+                    { NativePickers('Check Out') }
                 </div>
                 <div className='text-right bg-[#D9D9D9] p-2 rounded-b-lg border border-solid border-[#A7A5A5]'>
                     <button className={`${styles.button} bg-secondary hover:text-secondary hover:border-secondary`} >APPLY</button>
