@@ -17,23 +17,53 @@ export const pageList = ["Inspection", "Housekeepers"];
 export const filterSelect = [
     { 
         label: "Room Type",
-        options: ["Nothing Selected"]
+        options: [
+            {label:"1", value: "1"},
+            {label:"2", value: "2"},
+            {label:"3", value: "3"},
+            {label:"4", value: "4"},
+            {label:"5", value: "5"},
+        ]
     },
     {
         label: "Room status",
-        options: ["Nothing Selected"]
+        options: [
+            {label:"1", value: "1"},
+            {label:"2", value: "2"},
+            {label:"3", value: "3"},
+            {label:"4", value: "4"},
+            {label:"5", value: "5"},
+        ]
     },
     {
         label: "Room Condition",
-        options: ["Nothing Selected"]
+        options: [
+            {label:"1", value: "1"},
+            {label:"2", value: "2"},
+            {label:"3", value: "3"},
+            {label:"4", value: "4"},
+            {label:"5", value: "5"},
+        ]
     },
     {
         label: "Frontdeak status",
-        options: ["Nothing Selected"]
+        options: [
+            {label:"1", value: "1"},
+            {label:"2", value: "2"},
+            {label:"3", value: "3"},
+            {label:"4", value: "4"},
+            {label:"5", value: "5"},
+        ]
     },
     {
         label: "Assigned to",
-        options: ["Nothing Selected"]
+        options: [
+            {label:"1", value: "1"},
+            {label:"2", value: "2"},
+            {label:"3", value: "3"},
+            {label:"4", value: "4"},
+            {label:"5", value: "5"},
+        ]
     }
 ]
 
@@ -138,3 +168,41 @@ export const tableHeaderList_Accommodation = [
 ];
 
 //Reservation
+export const InspDataMockup = [
+    {
+      room: "SUP(1)",
+      type: "SUP",
+      condition: "clean",
+      roomStatus: "vacant",
+      arrivalData: "10/22/2022",
+      departureDate: "10/25/2022",
+      frontdeskStatus: "Ckeck-in",
+      assignedTo: "Susy",
+      donotDisturb: "false",
+      comments: ["Lovely room"],
+    },
+    {
+      room: "SUP(1)",
+      type: "SUP",
+      condition: "clean",
+      roomStatus: "vacant",
+      arrivalData: "10/22/2022",
+      departureDate: "10/25/2022",
+      frontdeskStatus: "Ckeck-in",
+      assignedTo: "Susy",
+      donotDisturb: "false",
+      comments: ["Lovely room"],
+    },
+    {
+      room: "SUP(1)",
+      type: "SUP",
+      condition: "clean",
+      roomStatus: "vacant",
+      arrivalData: "10/22/2022",
+      departureDate: "10/25/2022",
+      frontdeskStatus: "Ckeck-in",
+      assignedTo: "Susy",
+      donotDisturb: "false",
+      comments: ["Lovely room"],
+    }
+  ];
