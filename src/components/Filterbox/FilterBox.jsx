@@ -88,7 +88,7 @@ function NativePickers(props) {
     )
     }     
 
-const FilterBox = (props) => {
+const FilterBox = ({filter}) => {
     
     // if props.filter == 
     const date = new Date();
@@ -112,7 +112,7 @@ const FilterBox = (props) => {
                     FILTER
                 </div>
                 <div className='border border-solid border-x-[#A7A5A5] p-2'>
-                        {props.filter.map((condition) => (
+                        {filter.map((condition) => (
                         MultipleSelectCheckmarks(condition.title,condition.items)
                     ))}
                     {/* <DateSelect /> */}
@@ -129,14 +129,14 @@ const FilterBox = (props) => {
                     <button className={`${styles.button} bg-[#9D9B9B] hover:text-primary hover:inner-border-primary`} onClick={handleClear} >CLEAR</button>
                 </div>
             </div>
-            <div>
+            {/* <div>
                 check in date: {checkInFilter}
             </div>
-            <div>check out date: {checkOutFilter}</div>
+            <div>check out date: {checkOutFilter}</div> */}
         </div>
         
     );
-};
+}
 export default FilterBox;
 
 

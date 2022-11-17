@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import {guestDetails,navList_specific_guest,tableHeaderList_Accommodation,guestsDataMockUp}  from "../../constants/text";
+import {guestDetails,navList_specific_guest,tableHeaderList_Accommodation,tableHeaderList_specific_Guest_detail,guestsDataMockUp}  from "../../constants/text";
 import GreyBox from './GreyBox';
 import NoteDetail from './NoteDetail';
 
@@ -155,8 +155,8 @@ const GuestsDetail=({guestName,guestStatus,setGuestStatus})=>{
               ))}
         </div> 
         { 
-          page === "Accommodation" ? <GreyBox header = {tableHeaderList_Accommodation} data = {guestsDataMockUp}/> 
-          : page === "Guest Datails" ? <GreyBox/>
+          page === "Accommodation" ? <GreyBox parentName="Accommodation" header = {tableHeaderList_Accommodation} data = {guestsDataMockUp}/> 
+          : page === "Guest Datails" ? <GreyBox parentName="Guest Datails" header = {tableHeaderList_specific_Guest_detail} data = {guestsDataMockUp}/>
           : <NoteDetail/>
         } 
             

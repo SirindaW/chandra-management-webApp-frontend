@@ -8,7 +8,8 @@ const Guests=()=>{
     // const [guestName,setGuestName] = useState("Guest Name");
     const [guestStatus,setGuestStatus] = useState("Guest Status");
     return (
-        <>  {guestName},{guestStatus}
+        <>  
+        {/* {guestName},{guestStatus} */}
             <div className='flex flex-row justify-between mt-5 mx-10'>
                 
                 <div>

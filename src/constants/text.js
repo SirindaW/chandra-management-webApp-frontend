@@ -181,6 +181,14 @@ export const tableHeaderList_Accommodation = [
     "TOTAL",
     "EDIT"
 ];
+export const tableHeaderList_specific_Guest_detail = [
+    "NAME",
+    "EMAIL",
+    "PHONE",
+    "COUNTRY",
+    "ATTENDED GUEST",
+    "GUEST STATUS"
+];
 
 export const guestsDataMockUp=[
     {
@@ -202,7 +210,7 @@ export const guestsDataMockUp=[
         info: {
             RES_ID: 2,
             TYPE: "BeachHouse" ,
-            ROOM_NUM: "111",
+            ROOM_NUM: "112",
             ARRIVAL: "2022-11-01",
             DEPARTURE:  "2022-11-03" ,
             GUESTS: 2,
@@ -216,7 +224,7 @@ export const guestsDataMockUp=[
         info: {
             RES_ID: 3,
             TYPE: "BeachHouse" ,
-            ROOM_NUM: "111",
+            ROOM_NUM: "113",
             ARRIVAL: "2022-11-01",
             DEPARTURE:  "2022-11-03" ,
             GUESTS: 2,
@@ -230,7 +238,7 @@ export const guestsDataMockUp=[
         info: {
             RES_ID: 4,
             TYPE: "BeachHouse" ,
-            ROOM_NUM: "111",
+            ROOM_NUM: "114",
             ARRIVAL: "2022-11-01",
             DEPARTURE:  "2022-11-03" ,
             GUESTS: 2,
@@ -244,7 +252,7 @@ export const guestsDataMockUp=[
         info: {
             RES_ID: 5,
             TYPE: "BeachHouse" ,
-            ROOM_NUM: "111",
+            ROOM_NUM: "115",
             ARRIVAL: "2022-11-01",
             DEPARTURE:  "2022-11-03" ,
             GUESTS: 2,
