@@ -24,7 +24,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("tailwindcss-inner-border"),
+    require("tailwindcss-inner-border"), //npm install -D tailwindcss-inner-border
     require('tailwindcss-textshadow')
   ],
 };
