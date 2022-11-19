@@ -64,7 +64,7 @@ const Housekeeper = () => {
 
   return (
     <>
-      <div className="flex flex-col p-[2rem] gap-[1.5rem] overflow-auto">
+      <div className="flex flex-col p-[2rem] gap-[1.5rem] max-h-[300px]">
         {/* Backdrop */}
         {open.index != null && (
           <div

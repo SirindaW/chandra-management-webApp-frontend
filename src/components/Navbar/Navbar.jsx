@@ -14,7 +14,7 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
     if (window.innerWidth <= 900) {
       setActiveMenu(false);
     }
-  }, [window.innerWidth]);
+  }, [setActiveMenu]);
 
   const handleActiveMenu = () => setActiveMenu((prev) => !prev);
 

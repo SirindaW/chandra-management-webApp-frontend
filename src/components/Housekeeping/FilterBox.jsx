@@ -1,10 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
-
-import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 import { filterSelect } from "../../constants/text";
-import { StarRateSharp } from "@mui/icons-material";
 
 const FilterBox = ({ states }) => {
   return (
@@ -16,7 +13,7 @@ const FilterBox = ({ states }) => {
       {/* Filter options box */}
       <div className="p-[1rem] flex gap-[1rem] bg-white">
         {filterSelect.map((select, index) => (
-          <div>
+          <div key={index}>
             <div>{select.label}</div>
             <MultiSelect
               className="w-[180px]"

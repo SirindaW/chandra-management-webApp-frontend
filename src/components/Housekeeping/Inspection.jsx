@@ -9,6 +9,8 @@ import FilterBox from "./FilterBox";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { CheckBox } from "@mui/icons-material";
+import { BiCommentEdit } from 'react-icons/bi'
 
 const Inspection = () => {
   const [R_Type, set_R_Type] = useState([]);
@@ -17,17 +19,19 @@ const Inspection = () => {
   const [F_Status, set_F_Status] = useState([]);
   const [AssignedTo, setAssignTo] = useState([]);
 
-  const [datas, setDatas] = useState();
+  const [tasks, setTasks] = useState(null);
+  const [hkList, setHkList] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = ()=>{
-    axios
-      .get("http://localhost:3001/api/admin/housekeeping/tasks")
-      .then((r) => {
-        setDatas(r.data);
-        setIsLoading(false);
-      });
-  }
+  const fetchData = async () => {
+    const tasks = await axios.get(
+      "http://localhost:3001/api/admin/housekeeping/tasks"
+    );
+    const hk = await axios.get("http://localhost:3001/api/admin/housekeeping/housekeepers");
+    setHkList(hk.data);
+    setTasks(tasks.data);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
     fetchData();
@@ -53,13 +57,22 @@ const Inspection = () => {
     setAssignTo(newFilter);
   };
 
-  const handleCondition = (e,id) => {
+  const handleCondition = (e, id) => {
     const body = {
-      "_id": id,
-      "condition": e.target.value,
-    }
-    axios.post("http://localhost:3001/api/admin/housekeeping/task/changeCondition",body).then(()=>fetchData());
+      _id: id,
+      condition: e.target.value,
+    };
+    axios
+      .post(
+        "http://localhost:3001/api/admin/housekeeping/task/changeCondition",
+        body
+      )
+      .then(() => fetchData());
   };
+
+  const handleAssignedTo = (e,id) => {
+
+  }
 
   const statesList = [
     { state: R_Type, setState: handle_R_Type },
@@ -81,49 +94,53 @@ const Inspection = () => {
             <thead className="h-[47px] bg-[#D9D9D9]">
               <tr>
                 {tableHeaderList.map((header, idx) => (
-                  <th
-                    key={idx}
-                    className={
-                      idx !== tableHeaderList.length - 1 &&
-                      "border-r border-r-[1px] border-r-[#9A9A9A]"
-                    }
-                  >
-                    {header}
-                  </th>
+                  <th key={idx} className={ idx !== tableHeaderList.length - 1 ? "border-r border-r-[1px] border-r-[#9A9A9A]":null } >{header}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {isLoading && <CircularProgress />}
-              {!isLoading &&
-                datas.map((data, idx) => (
+              {isLoading ? <CircularProgress /> : null }
+              {!isLoading ?
+                tasks.map((task, idx) => (
                   <tr key={idx} className="text-center">
-                    <td className="h-[65px]">{data.room}</td>
-                    <td className="h-[65px]">{data.type}</td>
+                    <td className="h-[65px]">{101 + idx}</td>
+                    <td className="h-[65px]">{task.type}</td>
                     <td className="h-[65px]">
                       <div className="flex justify-center items-center">
-                        <select
-                          id="countries"
-                          class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
-                          value={data.condition}
-                          onChange={e=>{handleCondition(e,data._id)}}
-                        >
+                        <select id="countries" class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
                           <option value="cleaned">Clean</option>
                           <option value="dirty">Dirty</option>
                         </select>
                       </div>
                     </td>
-                    <td className="h-[65px]">{data.roomStatus}</td>
-                    <td className="h-[65px]">{data.arrivalDate}</td>
-                    <td className="h-[65px]">{data.departureDate}</td>
-                    <td className="h-[65px]">{data.frontdeskStatus}</td>
-                    <td className="h-[65px]">{data.assiged}</td>
+                    <td className="h-[65px]">{task.roomStatus}</td>
+                    <td className="h-[65px]">{task.arrivalDate}</td>
+                    <td className="h-[65px]">{task.departureDate}</td>
+                    <td className="h-[65px]">{task.frontdeskStatus}</td>
                     <td className="h-[65px]">
-                      {data.doNotDisturb ? "true" : "false"}
+                      <div className="flex justify-center items-center">
+                        <select
+                          id="countries"
+                          class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
+                          value={task.assiged}
+                          onChange={(e) => {
+                            handleAssignedTo(e, task._id);
+                          }}
+                        >
+                         {hkList.map((hk)=> <option value={hk.fname}>{hk.fname}</option>)}
+                        </select>
+                      </div>
                     </td>
-                    <td className="h-[65px]">comments</td>
+                    <td className="h-[65px]">
+                      <CheckBox checked={task.doNotDisturb}/>
+                    </td>
+                    <td className="h-[65px]">
+                      <div className="flex justify-center items-center">
+                        <BiCommentEdit style={{fontSize:"40px"}} />
+                      </div>
+                    </td>
                   </tr>
-                ))}
+                )) : null}
             </tbody>
           </table>
         </div>

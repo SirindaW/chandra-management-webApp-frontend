@@ -16,7 +16,7 @@ import { authUrl, dashboardUrl, calendarUrl, reservationUrl, housekeepUrl, rates
 const App = () => {
   // const user = JSON.parse(localStorage.getItem('user'));
   const user = true; 
-  const [activeMenu, setActiveMenu] = useState(true);
+  const [activeMenu, setActiveMenu] = useState(false);
   const IsLogin = ({ comp }) => (user ? comp : <Navigate to={authUrl} replace />);
   
   return (
