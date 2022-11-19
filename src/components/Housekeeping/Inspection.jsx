@@ -136,7 +136,7 @@ const Inspection = () => {
                     </td>
                     <td className="h-[65px]">
                       <div className="flex justify-center items-center">
-                        <BiCommentEdit style={{fontSize:"40px"}} />
+                        <BiCommentEdit style={{fontSize:"30px"}} />
                       </div>
                     </td>
                   </tr>
