@@ -1,36 +1,32 @@
 import React from 'react';
-const GreyBox = ({parentName,header,data}) => {
-    return(
-        <>
-            <table className="w-full table-auto bg-white overflow-scroll">
+const GreyBox = ({ parentName, header, data }) => {
+   return (
+      <>
+         <table className="w-full table-auto bg-white overflow-scroll">
             <thead className="h-[47px] w-full bg-[#D9D9D9]">
-              <tr>
-                {header.map((h, idx) => (
-                  <th
-                    key={idx}
-                    className={
-                      idx !== header.length - 1
-                        && "border-r border-r-[1px] border-r-[#9A9A9A]"
-                    }
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
+               <tr>
+                  {header.map((h, idx) => (
+                     <th key={idx} className={idx !== header.length - 1 && 'border-r border-r-[1px] border-r-[#9A9A9A]'}>
+                        {h}
+                     </th>
+                  ))}
+               </tr>
             </thead>
             <tbody>
-              {data.map((d,idx) => (
-                <tr key={idx} className="text-center hover:cursor-pointer">
-                  {d.map((v) => (
-                    <td className="h-[65px]">{v}</td>
-                  ))}
+               {data.map((d, idx) => (
+                  <tr key={idx} className="text-center hover:cursor-pointer">
+                     {d.map((v, index) => (
+                        <td key={index} className="h-[65px]">
+                           {v}
+                        </td>
+                     ))}
 
-                  {/* <td className="h-[65px]">comments</td> */}
-                </tr>
-              ))}
+                     {/* <td className="h-[65px]">comments</td> */}
+                  </tr>
+               ))}
             </tbody>
-          </table>
-        </>
-    );
-}
+         </table>
+      </>
+   );
+};
 export default GreyBox;
