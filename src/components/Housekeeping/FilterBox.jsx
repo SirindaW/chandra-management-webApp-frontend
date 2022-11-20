@@ -1,8 +1,11 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { MultiSelect } from "react-multi-select-component";
+import {
+  filterSelect,
+} from "../../constants/text";
 
-const FilterBox = ({ states }) => {
+const FilterBox = ({states}) => {
   return (
     /* Filter box*/
     <div className="flex flex-col m-[2rem] rounded-[8px] bg-[#D9D9D9] border-[1px] border-primaryfade shadow-lg">

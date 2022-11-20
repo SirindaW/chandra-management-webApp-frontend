@@ -91,7 +91,7 @@ const Housekeeper = () => {
         {/* Housekeepers List */}
 
         {/* Container */}
-        <div className="flex flex-col justify-start item bg-secondary min-h-[500px] rounded-[8px] border border-[1px] border-primaryfade shadow-lg">
+        <div className="flex flex-col justify-start item bg-secondary min-h-[500px] rounded-[8px] border border-[1px] border-primaryfade shadow-lg overflow-hidden">
           {/* Header */}
           <div className="text-[15px] p-[0.5rem] text-white">Housekeepers</div>
 

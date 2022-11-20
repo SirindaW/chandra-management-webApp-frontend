@@ -88,35 +88,28 @@ export const tableHeaderList = [
 
 export const filterSelect_Guest = [
     {
-        title: 'New or Attended guests',
-        items: [
-            'New', 
-            'Attended'
+      label: 'New or Attended guests',
+      options: [
+        { label: "New", value: "New" },
+        { label: "Attended", value: "Attended" },
         ]
     },
     {
-        title: 'Country',
-        items: [
-            'Thailand',
-            'USA',
-            'UK',
-            'Canada',
-            'France',
-            'Australia',
-            'Germany',
-            'Italy',
-            'Spain',
-            'China',
-            'India'
+      label: 'Country',
+      options: [
+        { label: "Thailand", value: "Thailand" },
+        { label: "USA", value: "USA" },
+        { label: "UK", value: "UK" },
+        { label: "China", value: "China" }
         ]
     },
     {
-        title: 'Guest Status',
-        items: [
-            'Confirmed',
-            'Cancelled',
-            'Stayover',
-            'Checked Out'
+      label: 'Guest Status',
+      options: [
+        { label: "Confirmed", value: "Confirmed" },
+        { label: "Cancelled", value: "Cancelled" },
+        { label: "Stayover", value: "Stayover" },
+        { label: "Checked Out", value: "Checked Out" }
         ]
     }
 ];

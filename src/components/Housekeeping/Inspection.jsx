@@ -85,7 +85,7 @@ const Inspection = () => {
   return (
     <>
       <FilterBox states={statesList} />
-      <div className="flex flex-col justify-start item mx-[2rem] bg-secondary rounded-[8px] min-h-[588px] border border-[1px] border-primaryfade shadow-lg mb-[110px]">
+      <div className="flex flex-col justify-start item mx-[2rem] bg-secondary rounded-[8px] min-h-[588px] border border-[1px] border-primaryfade shadow-lg mb-[110px] overflow-hidden">
         <div className="font-extrabold text-[20px] p-[1rem] text-white">
           Inspection
         </div>
