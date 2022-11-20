@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { AiOutlineMenu } from 'react-icons/ai';
-import muiStyles from "./muiStyles";
-import { useDispatch, useSelector } from "react-redux";
+// import muiStyles from "./muiStyles";
+// import { useDispatch, useSelector } from "react-redux";
 
-import styles from "./styles";
+// import styles from "./styles";
 
 const Navbar = ({ activeMenu, setActiveMenu }) => {
   const today = new Date();
@@ -14,7 +14,7 @@ const Navbar = ({ activeMenu, setActiveMenu }) => {
     if (window.innerWidth <= 900) {
       setActiveMenu(false);
     }
-  }, [window.innerWidth]);
+  }, [setActiveMenu]);
 
   const handleActiveMenu = () => setActiveMenu((prev) => !prev);
 

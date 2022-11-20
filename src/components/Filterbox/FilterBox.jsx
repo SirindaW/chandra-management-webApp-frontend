@@ -1,4 +1,5 @@
-import React , { useState } from 'react';
+import React  from 'react';
+// import React , { useState } from 'react';
 import dayjs from 'dayjs';
 import styles from './styles.js';
 
@@ -40,7 +41,7 @@ const MultipleSelectCheckmarks = (title,vals) => {
     
         return (
         <>
-            <FormControl sx={{ m: 1, width: 345 }}>
+            <FormControl sx={{width: 245, m: 1}}>
             <InputLabel id="demo-multiple-checkbox-label">{title}</InputLabel>
             <Select
                 labelId="demo-multiple-checkbox-label"
@@ -93,25 +94,25 @@ const FilterBox = ({filter}) => {
     // if props.filter == 
     const date = new Date();
     const currentDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`;
-    const [filter1, setFilter1] = React.useState('');
-    const [filter2, setFilter2] = React.useState('');
-    const [filter3, setFilter3] = React.useState('');
+    // const [filter1, setFilter1] = React.useState('');
+    // const [filter2, setFilter2] = React.useState('');
+    // const [filter3, setFilter3] = React.useState('');
     const [checkInFilter, setCheckInFilter] = React.useState(currentDate);
     const [checkOutFilter, setCheckOutFilter] = React.useState(currentDate);
     const handleClear = () =>{
-        setFilter1('');
-        setFilter2('');
-        setFilter3('');
+        // setFilter1('');
+        // setFilter2('');
+        // setFilter3('');
         setCheckInFilter(currentDate);
         setCheckOutFilter(currentDate);
     }
     return (
         <div>            
             <div className='m-2 md:m-10 mt-24 p-2 md:p-10'>
-                <div className='text-left font-semibold bg-[#D9D9D9] p-2 rounded-t-lg border border-solid border-[#A7A5A5]'>
+                <div className='text-left  bg-[#D9D9D9] p-2 rounded-t-lg border border-solid border-[#A7A5A5]'>
                     FILTER
                 </div>
-                <div className='border border-solid border-x-[#A7A5A5] p-2'>
+                <div className='border border-solid border-x-[#A7A5A5] p-2 flex flex-row justify-evenly'>
                         {filter.map((condition) => (
                         MultipleSelectCheckmarks(condition.title,condition.items)
                     ))}
@@ -119,7 +120,7 @@ const FilterBox = ({filter}) => {
                     <NativePickers className="checkInBox" title="Check In" date = {checkInFilter}
                         changeDate={checkInFilter=>setCheckInFilter(checkInFilter) }
                     />
-                    <NativePickers title="Check Out" 
+                    <NativePickers title="Check Out" date = {checkOutFilter}
                         changeDate={checkOutFilter=>setCheckOutFilter(checkOutFilter)}
                     />
                     {/* { NativePickers ({title:'Check In' , setSelectedDate: {setCheckInFilter}})} */}

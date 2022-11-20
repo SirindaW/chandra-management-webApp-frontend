@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "@mui/material";
-
-import { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 
 const MultiInputSelect = ({select, index,onUpdate}) => {
@@ -36,7 +34,18 @@ const FilterBox = ({filters,updateFunctions}) => {
 
       {/* Filter options box */}
       <div className="p-[1rem] flex gap-[1rem] bg-white">
-        {filters.map((select,index)=> <MultiInputSelect onUpdate={updateFunctions[index]}  select={select} index={index}/>)}
+        {filterSelect.map((select, index) => (
+          <div key={index}>
+            <div>{select.label}</div>
+            <MultiSelect
+              className="w-[180px]"
+              options={select.options}
+              value={states[index].state}
+              onChange={states[index].setState}
+              labelledBy={select.label}
+            />
+          </div>
+        ))}
       </div>
 
       <div className="flex justify-end items-center p-[0.5rem] gap-[1rem]">
