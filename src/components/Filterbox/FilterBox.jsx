@@ -1,4 +1,4 @@
-import React  from 'react';
+import React , {useState}  from 'react';
 // import React , { useState } from 'react';
 import styles from './styles.js';
 
@@ -10,26 +10,43 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
-function NativePickers({title,date,onChange}) {
-
+export function NativePickers({title,date,onChange}) {
     return(
-        <>
-            <FormControl sx={{ m: 1, width: 220 }}>
-                <LocalizationProvider dateAdapter={AdapterDayjs} >
-                <DesktopDatePicker
-                    label={title}
-                    inputFormat="MM/DD/YYYY"
-                    value={date}
-                    onChange={onChange}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                </LocalizationProvider>
-            </FormControl>
+        <> 
+            { (title === "Check  In" || title === "Check  Out") ? 
+                <>
+                    <FormControl sx={{ m: 1, display: 'flex' , flexGrow: 1 , backgroundColor: '#ffffff'}}>
+                        <LocalizationProvider dateAdapter={AdapterDayjs} >
+                            <DesktopDatePicker
+                                label={title}
+                                inputFormat="MM/DD/YYYY"
+                                value={date}
+                                onChange={onChange}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                            </LocalizationProvider>
+                    </FormControl>
+                </>
+                :
+                    <>
+                        <FormControl sx={{ m: 1, width: 220 , backgroundColor: '#ffffff'}}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs} >
+                                <DesktopDatePicker
+                                    label={title}
+                                    inputFormat="MM/DD/YYYY"
+                                    value={date}
+                                    onChange={onChange}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </LocalizationProvider>
+                        </FormControl>
+                    </>
+            }
         </>
     )
-    }     
+}
 
-const FilterBox = ({filter,textStates,dateStates,clear}) => {
+export const FilterBox = ({filter,textStates,dateStates,clear}) => {
 
     return (
         <div>            
@@ -37,12 +54,12 @@ const FilterBox = ({filter,textStates,dateStates,clear}) => {
                 <div className='text-left  bg-[#D9D9D9] p-2 rounded-t-lg border border-solid border-[#A7A5A5]'>
                     FILTER
                 </div>
-                <div className='border border-solid border-x-[#A7A5A5] p-2 flex flex-row justify-evenly'>
+                <div className='border border-solid border-x-[#A7A5A5] p-2 flex lg:flex-row flex-col justify-evenly'>
                         {filter.map((select, index) => (
                             <div key={index}>
                                 <div>{select.label}</div>
                                 <MultiSelect
-                                className="w-[350px]"
+                                className=" w-[150px] xl:w-[350px]"
                                 options={select.options}
                                 value={textStates[index].state}
                                 onChange={textStates[index].setState}

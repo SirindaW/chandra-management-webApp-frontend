@@ -253,8 +253,67 @@ export const guestMainDataMockUp = [ //for guest_main and specific_guest_detail 
         "Confirmed"
     ]
 ];
-
 //Reservation
+export const Display_Type_list = [
+  {
+    label: 'Display',
+    options: [
+      { label: "Base Rate", value: "Base Rate" },
+      { label: "Special", value: "Special" },
+      { label: "Promotional", value: "Promotional" },
+      { label: "Package", value: "Package" },
+      ]
+  },
+  {
+    label: 'Select Accommodation',
+    options: [
+      { label: "Superior Room", value: "Superior Room" },
+      { label: "Deluxe Room", value: "Deluxe Room" },
+      { label: "Beach House", value: "Beach House" },
+      { label: "Family Premium", value: "Family Premium" },
+      ]
+  }
+];
+export const Availability_header_list = [
+  "TYPE","STARTING FROM", "ARRIVE" , "DEPART" , "AVAILABLE" , "ADULT" , "CHILD" , "QUANTITY"," "
+];
+export const Availability_dataMockup = [
+  {
+    TYPE: "Superior Room",
+    START: "THB 1,590",
+    ARRIVE: "10/23/2022",
+    DEPART: "10/25/2022",
+    AVAILABLE: 14 ,
+  },
+  {
+    TYPE: "Deluxe Room",
+    START: "THB 1,690",
+    ARRIVE: "10/23/2022",
+    DEPART:"10/25/2022",
+    AVAILABLE: 7
+  },
+];
+
+export const reservation_info_list = [
+  "First Name",
+  "Last Name",
+  "Mobile Phone",
+  "Email Address",
+  "Address",
+  "County"
+];
+
+export const tableHeaderList_payment = [ // header for guest_main and specific_guest_detail and reservation table
+    "FIRST NAME",
+    "LAST NAME",
+    "EMAIL",
+    "PHONE",
+    "COUNTRY",
+    "ADDRESS",
+];
+
+//peak
+
 export const InspDataMockup = [
   {
     room: "SUP(1)",

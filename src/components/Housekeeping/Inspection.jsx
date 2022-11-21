@@ -102,10 +102,10 @@ const Inspection = () => {
               {isLoading ? <CircularProgress /> : null }
               {!isLoading ?
                 tasks.map((task, idx) => (
-                  <tr key={idx} className="text-center">
-                    <td className="h-[65px]">{101 + idx}</td>
-                    <td className="h-[65px]">{task.type}</td>
-                    <td className="h-[65px]">
+                  <tr key={idx} className="text-center hover:cursor-pointer h-[65px] border-b border-gray-200">
+                    <td>{101 + idx}</td>
+                    <td>{task.type}</td>
+                    <td>
                       <div className="flex justify-center items-center">
                         <select id="countries" class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
                           <option value="cleaned">Clean</option>
@@ -113,11 +113,11 @@ const Inspection = () => {
                         </select>
                       </div>
                     </td>
-                    <td className="h-[65px]">{task.roomStatus}</td>
-                    <td className="h-[65px]">{task.arrivalDate}</td>
-                    <td className="h-[65px]">{task.departureDate}</td>
-                    <td className="h-[65px]">{task.frontdeskStatus}</td>
-                    <td className="h-[65px]">
+                    <td>{task.roomStatus}</td>
+                    <td>{task.arrivalDate}</td>
+                    <td>{task.departureDate}</td>
+                    <td>{task.frontdeskStatus}</td>
+                    <td>
                       <div className="flex justify-center items-center">
                         <select
                           id="countries"
@@ -131,10 +131,10 @@ const Inspection = () => {
                         </select>
                       </div>
                     </td>
-                    <td className="h-[65px]">
+                    <td>
                       <CheckBox checked={task.doNotDisturb}/>
                     </td>
-                    <td className="h-[65px]">
+                    <td>
                       <div className="flex justify-center items-center">
                         <BiCommentEdit style={{fontSize:"30px"}} />
                       </div>

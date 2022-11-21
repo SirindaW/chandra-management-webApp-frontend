@@ -22,10 +22,8 @@ const GreyBox = ({parentName,header,data}) => {
               {data.map((d,idx) => (
                 <tr key={idx} className="text-center hover:cursor-pointer">
                   {d.map((v) => (
-                    <td className="h-[65px]">{v}</td>
+                    <td className="h-[65px] border-b border-gray-200 ">{v}</td>
                   ))}
-
-                  {/* <td className="h-[65px]">comments</td> */}
                 </tr>
               ))}
             </tbody>
