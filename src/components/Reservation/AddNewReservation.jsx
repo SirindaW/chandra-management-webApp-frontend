@@ -1,8 +1,10 @@
 import React , {useState} from 'react';
 import {NativePickers} from '../Filterbox/FilterBox.jsx';
-import {Display_Type_list,Availability_header_list,Availability_dataMockup,reservation_info_list,tableHeaderList_payment} from "../../constants/text";
+import {Display_Type_list,Availability_header_list,Availability_dataMockup,reservation_info_list,tableHeaderList_payment} from '../../constants/text';
 
 import Table from './Table.jsx';
+import AddNewReservationSummary from './AddNewReservationSummary.jsx';
+
 import Button from '@mui/material/Button';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import BedIcon from '@mui/icons-material/Bed';
@@ -17,7 +19,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { MultiSelect } from "react-multi-select-component";
+import { MultiSelect } from 'react-multi-select-component';
 
 export  function HorizontalLabelPositionBelowStepper({step}) {
   const steps = [
@@ -40,18 +42,31 @@ export  function HorizontalLabelPositionBelowStepper({step}) {
 }
 
 export const AddNewReservation = ({isAdding,setIsAdding}) => {
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [selectedDisplay, setSelectedDisplay] = useState([]);
+  const [selectedType, setSelectedType] = useState([]);
+  const handle_selectedDisplay = (newFilter) => {
+    setSelectedDisplay(newFilter);
+  };
+  const handle_selectedType = (newFilter) => {
+    setSelectedType(newFilter);
+  };
+  const dateStates = [
+    { state: selectedDisplay, setState: handle_selectedDisplay },
+    { state: selectedType, setState: handle_selectedType },
+  ];
 
   const [isSearchClicked, setIsSearchClicked] = useState(false);
 
-  const [selectedDisplay, setSelectedDisplay] = useState([]);
-  const [selectedType, setSelectedType] = useState([]);
+  
 
   const [step,setStep] =useState(0);
 
   const [selectedRoom, setSelectedRoom] = useState([]);
   const [isAddedRoom, setIsAddedRoom] = useState(false);
+
+  const [isBackToEditPaymentClicked, setIsBackToEditPaymentClicked] = useState(false);
 
   const [isBookingDetailsClicked, setIsBookingDetailsClicked] = useState(false);
 
@@ -73,24 +88,16 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
     setOpenDialog(false);
   };
 
-  const [page, setPage] = useState("Card Number");
+  const [page, setPage] = useState('Card Number');
 
-  const pageList = ["Card Number","Cash" ];
+  const pageList = ['Card Number','Cash' ];
 
-  // const [isBackClicked, setIsBackClicked] = useState(false);
 
   const handleSearchClick = () => {
     setIsSearchClicked(true);
   }
 
-  const handle_selectedDisplay = (newFilter) => {
-    setSelectedDisplay(newFilter);
-  };
-
-  const handle_selectedType = (newFilter) => {
-    setSelectedType(newFilter);
-  };
-
+  
   const handleIsAddedRoom = (value) => {
     setIsAddedRoom(value)
   };
@@ -113,6 +120,7 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
 
   const handleSavePaymentMethod = ()=>{
     setIsSavedPaymentMethod(true);
+    setIsBackToEditPaymentClicked(false);
   };
 
   const handleConfirmReservationClick = ()=>{
@@ -120,6 +128,11 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
     setStep(3);
     setIsAdding(false);
   };
+
+  const handleIsBackToEditPaymentClicked = ()=>{
+    setIsBackToEditPaymentClicked(true);
+    setIsSavedPaymentMethod(false);
+  }
 
   const handleBackInPaymentClick = ()=>{
     setIsBackInPaymentClicked(true);
@@ -129,36 +142,109 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
   };
 
 
-  const dateStates = [
-    { state: selectedDisplay, setState: handle_selectedDisplay },
-    { state: selectedType, setState: handle_selectedType },
+//===================================================== card number =====================================================
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry,setCardExpiry ] = useState('');
+  const [cardCvc, setCardCvc] = useState('');
+  const [cardHolder, setCardHolder] = useState('');
+  // const [cardNumber, setCardNumber] = useState('cardNumber');
+  // const [cardExpiry,setCardExpiry ] = useState('cardExpiry');
+  // const [cardCvc, setCardCvc] = useState('cardCvc');
+  // const [cardHolder, setCardHolder] = useState('cardHolder');
+  const handleCardNameChange = (event) => {
+    setCardHolder(event.target.value);
+  };
+  const handleCardNumberChange = (event) => { 
+    setCardNumber(event.target.value);
+  };
+  const handleCardExpiryChange = (event) => {
+    setCardExpiry(event.target.value);
+  };
+  const handleCardCvcChange = (event) => {
+    setCardCvc(event.target.value);
+  };
+  const handleClearCard = () => {
+    setCardCvc('');
+    setCardNumber('');
+    setCardHolder('');
+    setCardExpiry('');
+    // setCardCvc('cardCvc');
+    // setCardNumber('cardNumber');
+    // setCardHolder('cardHolder');
+    // setCardExpiry('cardExpiry');
+  };
+    
+  const cardStates = [
+    { state: cardNumber, setState: handleCardNumberChange },
+    { state: cardExpiry, setState: handleCardExpiryChange },
+    { state: cardCvc, setState: handleCardCvcChange },
+    { state: cardHolder, setState: handleCardNameChange }
   ];
-  
 
+  // ===================================================== cash =====================================================
+  const [cashierName, setCashierName] = useState('');
+  const [cashierID,setCashierID ] = useState('');
+  const [drawerBalance, setDrawerBalance] = useState('');
+  const [cashDrop, setCashDrop] = useState('');
+  // const [cashierName, setCashierName] = useState('Cashier Name');
+  // const [cashierID,setCashierID ] = useState('cashierID');
+  // const [drawerBalance, setDrawerBalance] = useState('drawerBalance');
+  // const [cashDrop, setCashDrop] = useState('cashDrop');
+  const handleCashierNameChange = (event) => {
+    setCashierName(event.target.value);
+  };
+  const handleCashierIDChange = (event) => { 
+    setCashierID(event.target.value);
+  };
+  const handleDrawerBalanceChange = (event) => {
+    setDrawerBalance(event.target.value);
+  };
+  const handleCashDropChange = (event) => {
+    setCashDrop(event.target.value);
+  };
+  const handleClearCash = () => {
+    setCashierName('');
+    setCashierID('');
+    setDrawerBalance('');
+    setCashDrop('');
+  };
+    
+  const cashStates = [
+    { state: cashierName, setState: handleCashierNameChange },
+    { state: cashierID, setState: handleCashierIDChange },
+    { state: drawerBalance, setState: handleDrawerBalanceChange },
+    { state: cashDrop, setState: handleCashDropChange }
+  ];
 
+  // ===================================================== end cash =====================================================
+
+  //===================================================== card number =====================================================
+  // const handleClearPaymentMethod (value) => {
+  //   hand
+  // };
 
   return (
     <>  <HorizontalLabelPositionBelowStepper step={step} />
       {
         (!(isBookingDetailsClicked)) && (
           <div className='flex md:flex-row flex-col justify-around mx-72 mt-10 mb-10 '>
-            <NativePickers title="Check  In" date = {checkInDate} onChange={setCheckInDate}/>
-            <NativePickers title="Check  Out" date = {checkOutDate} onChange={setCheckOutDate}/>
-            {( checkInDate != "" && checkOutDate != "") && <Button variant="contained"  sx={{backgroundColor: '#27BE5A', my: '15px'}} onClick = {handleSearchClick}>SEARCH</Button>   }
+            <NativePickers title='Check  In' date = {checkInDate} onChange={setCheckInDate}/>
+            <NativePickers title='Check  Out' date = {checkOutDate} onChange={setCheckOutDate}/>
+            {( checkInDate != '' && checkOutDate != '') && <Button variant='contained'  sx={{backgroundColor: '#27BE5A', my: '15px'}} onClick = {handleSearchClick}>SEARCH</Button>   }
           </div>
         )
       }
         
       
       {
-          (!(isBookingDetailsClicked) &&( isSearchClicked)&&( checkInDate !== "" && checkOutDate !== "")) ?
+          (!(isBookingDetailsClicked) &&( isSearchClicked)&&( checkInDate !== '' && checkOutDate !== '')) ?
             <>
               <div className='my-2 shadow-lg border-t py-10 mt-10 flex md:flex-row flex-col md:justify-evenly items-center'>
                 {Display_Type_list.map((select,index) => (
                   <div key={index}>
                     <div>{select.label}</div>
                     <MultiSelect
-                    className="w-[600px]"
+                    className='w-[600px]'
                     options={select.options}
                     value={dateStates[index].state}
                     onChange={dateStates[index].setState}
@@ -169,19 +255,19 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
               </div>
               <div className='flex flex-row justify-evenly'>
                {/* Table = ({tableName,header,data}) */}
-                <Table tableName="Availability" header={Availability_header_list} data={Availability_dataMockup} />
+                <Table tableName='Availability' header={Availability_header_list} data={Availability_dataMockup} />
 
                 
               </div>
               
               <div className='mt-5 flex flex-row justify-end mr-16'>
-                <Button variant="contained"  sx={{backgroundColor: '#27BE5A'}} onClick = {handleBookingDetailsClick} >BOOKING DETAILS</Button>               
+                <Button variant='contained'  sx={{backgroundColor: '#27BE5A'}} onClick = {handleBookingDetailsClick} >BOOKING DETAILS</Button>               
               </div>
             </>
 
             : (!(isBookingDetailsClicked)) ? 
-              <div className = "flex flex-row justify-center justify-items-center my-24">
-                <div className = "flex flex-col justify-center w-[600px] h-[600px] rounded-full bg-[#D9D9D9]">
+              <div className = 'flex flex-row justify-center justify-items-center my-24'>
+                <div className = 'flex flex-col justify-center w-[600px] h-[600px] rounded-full bg-[#D9D9D9]'>
                   <div className='flex flex-row justify-center'>
                     <EventAvailableIcon sx={{fontSize: 200}}/> 
                   </div>
@@ -195,33 +281,33 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
         (!isConfirmAndPayClicked) && (isBookingDetailsClicked) && (
           <>
             <div className='flex flex-col md:flex-row justify-center items-center'>
-              <Table tableName="RESERVATION INFORMATION" header="null" data={reservation_info_list} />
-              <Table tableName="Additional Details and Preferences" header="null" data={["Add note here"]} />
+              <Table tableName='GUEST INFORMATION' header='null' data={reservation_info_list} />
+              <Table tableName='Additional Details and Preferences' header='null' data={['Add note here']} />
               
             </div>
             <div className='mt-5 flex flex-row space-x-4 justify-end mr-16'> 
-                <Button variant="contained"  sx={{backgroundColor: '#9A9A9A'}} onClick={handleCancelClick} >BACK</Button>               
-                <Button variant="contained"  sx={{backgroundColor: '#27BE5A'}} onClick={handleConfirmClick}  >CONFIRM & PAY</Button>               
+                <Button variant='contained'  sx={{backgroundColor: '#9A9A9A'}} onClick={handleCancelClick} >BACK</Button>               
+                <Button variant='contained'  sx={{backgroundColor: '#27BE5A'}} onClick={handleConfirmClick}  >CONFIRM & PAY</Button>               
               </div>
           </>
         )
       }
       {
-        (!(isSavedPaymentMethod)) && (isConfirmAndPayClicked) && (!(isConfirmReservationClicked)) && (
+        (!(isSavedPaymentMethod)) && (isConfirmAndPayClicked) && (!(isConfirmReservationClicked)) &&(
           <>
-            <div className="flex justify-start items-center w-full h-[4rem] my-10 text-xl gap-[2rem] border-y border-b-1 border-b-[#A7A5A5]">
+            <div className='flex justify-start items-center w-full h-[4rem] my-10 text-xl gap-[2rem] border-y border-b-1 border-b-[#A7A5A5]'>
             {pageList.map((p, idx) => (
               <div
                 key={idx}  
                 className={`w-fit h-full pt-[1rem] px-[0.5rem] ml-[1rem] ${
-                  page === p ? "border-b-[5px] border-b-[#D4990D]" : ""  
+                  page === p ? 'border-b-[5px] border-b-[#D4990D]' : ''  
                 } transition-all`}  
                 >  
                   <Button
                     sx={{
-                      fontSize: "20px",
-                      fontWeight: "400",
-                      width: "100%",
+                      fontSize: '20px',
+                      fontWeight: '400',
+                      width: '100%',
                     }}
                     onClick={() => {
                       setPage(p);
@@ -232,40 +318,51 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
                 </div>
               ))}
           </div> 
-          <div className='max-w-[750px]'>
+          <div className='lg:w-500 w-800 mx-[500px]' >
           { 
-            // page === "Card Number" ? <CardNumber /> 
-            page === "Card Number" ? 
-              <Table tableName="Payment Information" header="null" data={["NUMBER","EXP","CVV","NAME ON CARD"]} />
-            : <Table tableName="Payment Information" header="null" data={["Cashier Name","Cashier ID","Drawer Balance","Cash Drop"]} />
+            page === 'Card Number' ?
+            <>
+              <Table tableName='Payment Information' header='null' data={['NUMBER','EXP','CVV','NAME ON CARD']} states = {cardStates} />      
+            </>
+              
+            : 
+            <>
+              <Table tableName='Payment Information' header='null' data={['Cashier Name','Cashier ID','Drawer Balance','Cash Drop']} states = {cashStates} />
+            </>        
           } 
-          <div className='mt-5 flex flex-row space-x-4 justify-end mr-16'> 
-                        <Button variant="contained"  sx={{backgroundColor: '#9A9A9A'}}  >CANCEL</Button>               
-                        <Button variant="contained"  sx={{backgroundColor: '#D4990D'}} onClick = {handleSavePaymentMethod} >SAVE</Button>               
-                      </div>
-              </div>
-          
+            <div className='my-5 flex flex-row space-x-4 justify-end mr-16'> 
+            
+              {(page === 'Card Number' ) && (<Button variant='contained'  sx={{backgroundColor: '#9A9A9A'}} onClick= {handleClearCard} >CLEAR</Button>)  }             
+              {(page === 'Cash' ) && (<Button variant='contained'  sx={{backgroundColor: '#9A9A9A'}} onClick= {handleClearCash} >CLEAR</Button>)  }             
+              <Button variant='contained'  sx={{backgroundColor: '#D4990D'}} onClick = {handleSavePaymentMethod} >SAVE</Button>               
+            </div>
+            <hr></hr>
+          </div>
+            <div className='mt-5 flex flex-row space-x-4 justify-end mr-16'> 
+              <Button variant='contained'  sx={{backgroundColor: '#9A9A9A'}} onClick = {handleBackInPaymentClick}>BACK</Button>  
+            </div>
           </>
         )
       }
       {
-        (isSavedPaymentMethod) && (!(isConfirmReservationClicked)) && (
+        (isSavedPaymentMethod) && (!(isConfirmReservationClicked)) && (!(isBackToEditPaymentClicked)) && (
           <>
+            <AddNewReservationSummary />
             <div className='mt-5 flex flex-row space-x-4 justify-end mr-16'> 
-                <Button variant="contained"  sx={{backgroundColor: '#9A9A9A'}} onClick = {handleBackInPaymentClick}>BACK</Button>               
-                <Button variant="contained"  sx={{backgroundColor: '#27BE5A'}} onClick = {handleClickOpen} >CONFIRM RESERVATION</Button> 
+                <Button variant='contained'  sx={{backgroundColor: '#9A9A9A'}} onClick = {handleIsBackToEditPaymentClicked}>BACK</Button>               
+                <Button variant='contained'  sx={{backgroundColor: '#27BE5A'}} onClick = {handleClickOpen} >CONFIRM RESERVATION</Button> 
                 
                 <Dialog
                   open={openDialog}
                   onClose={handleClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
+                  aria-labelledby='alert-dialog-title'
+                  aria-describedby='alert-dialog-description'
                 >
-                  <DialogTitle id="alert-dialog-title">
-                    {"SEND RESERVATION CONFIRMATION"}
+                  <DialogTitle id='alert-dialog-title'>
+                    {'SEND RESERVATION CONFIRMATION'}
                   </DialogTitle>
                   <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
+                    <DialogContentText id='alert-dialog-description'>
                       Do you want to send a confirmation email to Krisada Prasertphakdee ? 
                     </DialogContentText>
                   </DialogContent>
@@ -277,9 +374,6 @@ export const AddNewReservation = ({isAdding,setIsAdding}) => {
                   </DialogActions>
                 </Dialog>              
               </div>
-            Reservation, Guest Info, ACCOMMODATION SUMMARY, TOTAL
-            {/* <Table tableName="Reservation" header={["Check-In","Check-Out","Nights","Reservation date"]} data={["10/23/2022","10/25/2022","3","10/22/2022"]} /> */}
-            {/* <Table tableName="Guest Info" header={tableHeaderList_payment} data={["Krisada","Prasertphakdee","Krisada@gmail.com ","053 526 4946","Thailand","-"]} /> */}
           </>
         )
       }

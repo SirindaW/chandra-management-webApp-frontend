@@ -6,7 +6,7 @@ const GreyBox = ({ parentName, header, data }) => {
             <thead className="h-[47px] w-full bg-[#D9D9D9]">
                <tr>
                   {header.map((h, idx) => (
-                     <th key={idx} className={idx !== header.length - 1 && 'border-r border-r-[1px] border-r-[#9A9A9A]'}>
+                     <th key={idx} className={idx !== header.length - 1 && 'border-r  border-r-[#9A9A9A]'}>
                         {h}
                      </th>
                   ))}
@@ -16,7 +16,7 @@ const GreyBox = ({ parentName, header, data }) => {
                {data.map((d, idx) => (
                   <tr key={idx} className="text-center hover:cursor-pointer">
                      {d.map((v, index) => (
-                        <td key={index} className="h-[65px]">
+                        <td key={index} className="h-[65px] border-b border-gray-200">
                            {v}
                         </td>
                      ))}

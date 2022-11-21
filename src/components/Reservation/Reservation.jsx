@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 import {FilterBox} from '../Filterbox/FilterBox.jsx';
-import {filterSelect_Guest,tableHeaderList_Accommodation,guestsDetailDataMockUp} from "../../constants/text";
+import {filterSelect_Guest,tableHeaderList_Accommodation,guestsDetailDataMockUp} from '../../constants/text';
 import AddNewReservation from './AddNewReservation.jsx';
 import Table from './Table.jsx';
 import Button from '@mui/material/Button';
@@ -62,26 +62,25 @@ const Reservation = () => {
     { state: filter4, setState: handle_filter4 },
     { state: filter5, setState: handle_filter5 },
   ];
-
   return (
     <div className='py-10'>
 
       {(!(isAdding))&&(
         <>
           <div className='mt-5 flex flex-row justify-end mr-16'>
-            <Button variant="contained"  sx={{backgroundColor: '#27BE5A'}} onClick={handleAdd} >CREATE NEW RESERVATION</Button> 
+            <Button variant='contained'  sx={{backgroundColor: '#27BE5A'}} onClick={handleAdd} >CREATE NEW RESERVATION</Button> 
           </div>
           <FilterBox filter = {filterSelect_Guest}   textStates = {textStates}  dateStates = {dateStates} clear = {handleClear}  />
-          <Table tableName="Reservation" header={tableHeaderList_Accommodation} data={guestsDetailDataMockUp}/>
+          <Table tableName='Reservation' header={tableHeaderList_Accommodation} data={guestsDetailDataMockUp}/>
         </>
       )}
       
       {(isAdding)&&(
         <>
           <div className='mt-5 flex flex-row justify-end mr-16'>
-            <Button variant="contained"  sx={{backgroundColor: '#B2BEB5'}} onClick={handleCancel}>CANCEL</Button>
+            <Button variant='contained'  sx={{backgroundColor: '#B2BEB5'}} onClick={handleCancel}>CANCEL</Button>
           </div>
-          <AddNewReservation isAdding={isAdding} setIsAdding = {setIsAdding}/>
+          <AddNewReservation setIsAdding = {setIsAdding}/>
           
           
         </>

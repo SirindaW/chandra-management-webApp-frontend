@@ -1,26 +1,25 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Forms from "./Forms";
-import AddNote from "./AddNote";
+import Forms from './Forms';
+import AddNote from './AddNote';
 
-const Table = ({tableName,header,data}) => {
-  
+const Table = ({tableName,header,data,states}) => {
     return (
-        <div className="flex flex-col justify-start item mx-[2rem] mt-10 rounded-lg min-h-[588px] border border-primaryfade shadow-lg ">
-          <div className="font-extrabold text-[20px] p-[1rem] bg-secondary rounded-t-lg  text-white">
+        <div className='flex flex-col justify-start item mx-[2rem] mt-10 rounded-lg min-h-[588px] border border-primaryfade shadow-lg'>
+          <div className='font-extrabold text-[20px] p-[1rem] bg-secondary rounded-t-lg  text-white'>
             {tableName}
           </div>
-          {header!=="null" && (          
-            <table className="w-full table-fixed bg-white overflow-scroll">
-                <thead className="h-[47px] w-full bg-[#D9D9D9]">
+          {header!=='null' && (          
+            <table className='w-full table-fixed bg-white overflow-scroll'>
+                <thead className='h-[47px] w-full bg-[#D9D9D9]'>
                   <tr>
                     {header.map((h, idx) => (
                       <th
                         key={idx}
                         className={
                           idx !== header.length - 1
-                            && "border-r border-r-[1px] border-r-[#9A9A9A]"
+                            && 'border-r border-r-[1px] border-r-[#9A9A9A]'
                         }
                       >
                         {h}
@@ -30,10 +29,10 @@ const Table = ({tableName,header,data}) => {
                 </thead>
                 <tbody>
                   {
-                    (tableName === "Availability") ? 
+                    (tableName === 'Availability') ? 
                       <>
                         {data.map((d,idx) => (
-                          <tr key={idx} className="text-center hover:cursor-pointer h-[65px] border-b border-gray-200">
+                          <tr key={idx} className='text-center hover:cursor-pointer h-[65px] border-b border-gray-200'>
                               <td >{d.TYPE}</td>
                               <td >{d.START}</td>
                               <td >{d.ARRIVE}</td>
@@ -42,31 +41,31 @@ const Table = ({tableName,header,data}) => {
                               <td className='px-14'>
                               <TextField
                                 required
-                                id="filled-required"
+                                id='filled-required'
                                 inputProps={{min: 0, style: { textAlign: 'center' }}} 
-                                label="Required"
+                                label=' '
                                 defaultValue={1}
-                                variant="filled"
+                                variant='filled'
                               />
                               </td>
                               <td className='px-14'>
                               <TextField
-                                id="filled-number"
+                                id='filled-number'
                                 inputProps={{min: 0, style: { textAlign: 'center' }}} 
-                                variant="filled"
+                                variant='filled'
                               />
                               </td>
-                              <td className='px-2'>
+                              <td className='px-14'>
                               <TextField
-                                id="filled-numbrt"
+                                id='filled-numbrt'
                                 inputProps={{min: 0, style: { textAlign: 'center' }}} 
-                                variant="filled"
+                                variant='filled'
                               />
                               </td>
                               <td>
-                                <Button variant="contained" sx={{backgroundColor: '#27BE5A'}}>ADD</Button>
+                                <Button variant='contained' sx={{backgroundColor: '#27BE5A'}}>ADD</Button>
                               </td>
-                            {/* <td className="h-[65px]">comments</td> */}
+                            {/* <td className='h-[65px]'>comments</td> */}
                           </tr>
                         ))}
                       </>
@@ -74,11 +73,11 @@ const Table = ({tableName,header,data}) => {
                       :
                       <>
                         {data.map((d,idx) => (
-                          <tr key={idx} className="text-center hover:cursor-pointer">
-                            {d.map((v) => (
-                              <td className="h-[65px] border-b border-gray-200">{v}</td>
+                          <tr key={idx} className='text-center hover:cursor-pointer'>
+                            {d.map((v,i) => (
+                              <td key = {i} className='h-[65px] border-b border-gray-200'>{v}</td>
                             ))}
-                            {/* <td className="h-[65px]">comments</td> */}
+                            {/* <td className='h-[65px]'>comments</td> */}
                           </tr>
                         ))}
                       </>
@@ -91,11 +90,11 @@ const Table = ({tableName,header,data}) => {
           )}
 
           {/* ======================== for reservation info ============================== */}
-          {(tableName==="RESERVATION INFORMATION" || tableName==="Payment Information") && (
-            <Forms labels = {data}/>
+          {(tableName==='GUEST INFORMATION' || tableName==='Payment Information') && (
+            <Forms labels = {data} states = {states}/>
           )
           }
-          {(tableName==="Additional Details and Preferences") && (
+          {(tableName==='Additional Details and Preferences') && (
             <AddNote />
           )
           }

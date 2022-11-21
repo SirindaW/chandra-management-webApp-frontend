@@ -1,20 +1,23 @@
-import React from "react";
+import React from 'react';
 import TextField from '@mui/material/TextField';
 
-export const Forms = ({labels}) => {
-  console.log(labels);
-
+export const Forms = ({labels,states}) => {
+  console.log({states})
   return (
-    <div className="flex flex-col items-center px-[30px] py-10 space-y-5">
+    <div className='flex flex-col items-center  px-[30px] py-10 space-y-5'>
       {labels.map((label,index) => (
           <TextField 
             required
             id={index}
-            // inputProps={{min: 0, style: { textAlign: 'center' }}} 
-            className="w-[600px] "
+            key = {index}
+            className='md:w-[600px] w-[100px] '
             label={label}
-            // defaultValue={1}
-            variant="filled"
+
+            // value = {states[index].state}
+            // onChange ={states[index].setState}
+
+            // defaultValue={1} 
+            variant='filled'
           />
       ))}
 

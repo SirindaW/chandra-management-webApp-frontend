@@ -94,7 +94,7 @@ const Inspection = () => {
                     <td>{task.type}</td>
                     <td>
                       <div className="flex justify-center items-center">
-                        <select id="countries" class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
+                        <select id="countries" className="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
                           <option value="cleaned">Clean</option>
                           <option value="dirty">Dirty</option>
                         </select>
@@ -108,7 +108,7 @@ const Inspection = () => {
                       <div className="flex justify-center items-center">
                         <select
                           id="countries"
-                          class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
+                          className="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
                           value={task.assiged}
                           onChange={(e) => {
                             handleAssignedTo(e, task._id);
