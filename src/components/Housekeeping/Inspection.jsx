@@ -1,16 +1,13 @@
 import React from "react";
-import {
-  filterSelect,
-  tableHeaderList,
-  InspDataMockup,
-} from "../../constants/text";
-import { Button, CircularProgress, MenuItem, Select } from "@mui/material";
+import { tableHeaderList, } from "../../constants/text";
+import { CircularProgress } from "@mui/material";
 import FilterBox from "./FilterBox";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import { CheckBox } from "@mui/icons-material";
+import { CheckBox, ConfirmationNumber } from "@mui/icons-material";
 import { BiCommentEdit } from 'react-icons/bi'
+import moment from "moment";
 
 const Inspection = () => {
   const [R_Type, set_R_Type] = useState([]);
@@ -34,8 +31,14 @@ const Inspection = () => {
   };
 
   useEffect(() => {
+    clearInterval(myInterval);
     fetchData();
   }, []);
+
+  const myInterval = setInterval(()=>{
+    clearInterval(myInterval);
+    fetchData();
+  },300000);
 
   const handle_R_Type = (newFilter) => {
     set_R_Type(newFilter);
@@ -71,7 +74,7 @@ const Inspection = () => {
   };
 
   const handleAssignedTo = (e,id) => {
-
+    
   }
 
   const statesList = [
@@ -84,7 +87,7 @@ const Inspection = () => {
 
   return (
     <>
-      <FilterBox states={statesList} />
+      {!isLoading && <FilterBox states={statesList} hk={hkList}/> }
       <div className="flex flex-col justify-start item mx-[2rem] bg-secondary rounded-[8px] min-h-[588px] border border-[1px] border-primaryfade shadow-lg mb-[110px]">
         <div className="font-extrabold text-[20px] p-[1rem] text-white">
           Inspection
@@ -94,7 +97,7 @@ const Inspection = () => {
             <thead className="h-[47px] bg-[#D9D9D9]">
               <tr>
                 {tableHeaderList.map((header, idx) => (
-                  <th key={idx} className={ idx !== tableHeaderList.length - 1 ? "border-r border-r-[1px] border-r-[#9A9A9A]":null } >{header}</th>
+                  <th key={header + idx} className={ idx !== tableHeaderList.length - 1 ? "border-r border-r-[1px] border-r-[#9A9A9A]":null } >{header}</th>
                 ))}
               </tr>
             </thead>
@@ -102,32 +105,32 @@ const Inspection = () => {
               {isLoading ? <CircularProgress /> : null }
               {!isLoading ?
                 tasks.map((task, idx) => (
-                  <tr key={idx} className="text-center">
-                    <td className="h-[65px]">{101 + idx}</td>
-                    <td className="h-[65px]">{task.type}</td>
+                  <tr key={task.roomNumber + idx} className="text-center uppercase">
+                    <td className="h-[65px]">{task.roomNumber}</td>
+                    <td className="h-[65px] uppercase">{task.type}</td>
                     <td className="h-[65px]">
                       <div className="flex justify-center items-center">
-                        <select id="countries" class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
+                        <select id="countries" className="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 " value={task.condition} onChange={(e) => { handleCondition(e, task._id); }}>
                           <option value="cleaned">Clean</option>
                           <option value="dirty">Dirty</option>
                         </select>
                       </div>
                     </td>
                     <td className="h-[65px]">{task.roomStatus}</td>
-                    <td className="h-[65px]">{task.arrivalDate}</td>
-                    <td className="h-[65px]">{task.departureDate}</td>
+                    <td className="h-[65px]">{moment.utc(task.arrivalDate).format('MM/DD/YYYY')}</td>
+                    <td className="h-[65px]">{moment.utc(task.departureDate).format('MM/DD/YYYY')}</td>
                     <td className="h-[65px]">{task.frontdeskStatus}</td>
                     <td className="h-[65px]">
                       <div className="flex justify-center items-center">
                         <select
                           id="countries"
-                          class="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
+                          className="h-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[100px] p-2.5 "
                           value={task.assiged}
                           onChange={(e) => {
                             handleAssignedTo(e, task._id);
                           }}
                         >
-                         {hkList.map((hk)=> <option value={hk.fname}>{hk.fname}</option>)}
+                         {hkList.map((hk,index)=> <option key={hk.fname + index} value={hk.fname}>{hk.fname}</option>)}
                         </select>
                       </div>
                     </td>

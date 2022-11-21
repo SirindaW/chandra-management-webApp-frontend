@@ -26,51 +26,32 @@ export const filterSelect = [
   {
     label: "Room Type",
     options: [
-      { label: "1", value: "1" },
-      { label: "2", value: "2" },
-      { label: "3", value: "3" },
-      { label: "4", value: "4" },
-      { label: "5", value: "5" },
+      { label: "SUP", value: "sup" },
+      { label: "DEL", value: "del" },
+      { label: "BEH", value: "beh" },
+      { label: "FAM", value: "fam" },
     ],
   },
   {
     label: "Room status",
     options: [
-      { label: "1", value: "1" },
-      { label: "2", value: "2" },
-      { label: "3", value: "3" },
-      { label: "4", value: "4" },
-      { label: "5", value: "5" },
+      { label: "Vacant", value: "vacant" },
+      { label: "Occupied", value: "occupied" },
     ],
   },
   {
     label: "Room Condition",
     options: [
-      { label: "1", value: "1" },
-      { label: "2", value: "2" },
-      { label: "3", value: "3" },
-      { label: "4", value: "4" },
-      { label: "5", value: "5" },
+      { label: "Clean", value: "clean" },
+      { label: "Dirty", value: "dirty" },
     ],
   },
   {
     label: "Frontdeak status",
     options: [
-      { label: "1", value: "1" },
-      { label: "2", value: "2" },
-      { label: "3", value: "3" },
-      { label: "4", value: "4" },
-      { label: "5", value: "5" },
-    ],
-  },
-  {
-    label: "Assigned to",
-    options: [
-      { label: "1", value: "1" },
-      { label: "2", value: "2" },
-      { label: "3", value: "3" },
-      { label: "4", value: "4" },
-      { label: "5", value: "5" },
+      { label: "NOT-RESERVED", value: "notRerserve" },
+      { label: "CHECK-IN", value: "checkIn" },
+      { label: "CHECK-OUT", value: "checkOut" },
     ],
   },
 ];

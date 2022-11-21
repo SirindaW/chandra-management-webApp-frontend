@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
-import CalendarTable from "../CalendarTable";
+import CalendarTable from "./CalendarTable";
 import moment from "moment";
-import { Calendar_DB_Data } from "../../../constants/text"
-import AccomGraph from "../AccomGraph";
+import { Calendar_DB_Data } from "../../constants/text"
+import AccomGraph from "./AccomGraph";
 
 const defaultPageClicked = {
   accom : false,
