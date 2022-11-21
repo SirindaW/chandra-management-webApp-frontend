@@ -1,86 +1,73 @@
-import React from "react";
-import {
-  filterSelect,
-  tableHeaderList,
-  InspDataMockup,
-} from "../../constants/text";
-import { Button, CircularProgress, MenuItem, Select } from "@mui/material";
-import FilterBox from "./FilterBox";
-import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
-import { CheckBox } from "@mui/icons-material";
-import { BiCommentEdit } from 'react-icons/bi'
+import React from 'react';
+import { filterSelect, tableHeaderList, InspDataMockup } from '../../constants/text';
+import { Button, CircularProgress, MenuItem, Select } from '@mui/material';
+import FilterBox from './FilterBox';
+import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { CheckBox } from '@mui/icons-material';
+import { BiCommentEdit } from 'react-icons/bi';
 
 const Inspection = () => {
-  const [R_Type, set_R_Type] = useState([]);
-  const [R_Status, set_R_Status] = useState([]);
-  const [R_Condition, set_R_Condition] = useState([]);
-  const [F_Status, set_F_Status] = useState([]);
-  const [AssignedTo, setAssignTo] = useState([]);
+   const [R_Type, set_R_Type] = useState([]);
+   const [R_Status, set_R_Status] = useState([]);
+   const [R_Condition, set_R_Condition] = useState([]);
+   const [F_Status, set_F_Status] = useState([]);
+   const [AssignedTo, setAssignTo] = useState([]);
 
-  const [tasks, setTasks] = useState(null);
-  const [hkList, setHkList] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+   const [tasks, setTasks] = useState(null);
+   const [hkList, setHkList] = useState(null);
+   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    const tasks = await axios.get(
-      "http://localhost:3001/api/admin/housekeeping/tasks"
-    );
-    const hk = await axios.get("http://localhost:3001/api/admin/housekeeping/housekeepers");
-    setHkList(hk.data);
-    setTasks(tasks.data);
-    setIsLoading(false);
-  };
+   const fetchData = async () => {
+      const tasks = await axios.get('http://localhost:3001/api/admin/housekeeping/tasks');
+      const hk = await axios.get('http://localhost:3001/api/admin/housekeeping/housekeepers');
+      setHkList(hk.data);
+      setTasks(tasks.data);
+      setIsLoading(false);
+   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+   useEffect(() => {
+      fetchData();
+   }, []);
 
-  const handle_R_Type = (newFilter) => {
-    set_R_Type(newFilter);
-  };
+   const handle_R_Type = (newFilter) => {
+      set_R_Type(newFilter);
+   };
 
-  const handle_R_Status = (newFilter) => {
-    set_R_Status(newFilter);
-  };
+   const handle_R_Status = (newFilter) => {
+      set_R_Status(newFilter);
+   };
 
-  const handle_R_Condition = (newFilter) => {
-    set_R_Condition(newFilter);
-  };
+   const handle_R_Condition = (newFilter) => {
+      set_R_Condition(newFilter);
+   };
 
-  const handle_F_Status = (newFilter) => {
-    set_F_Status(newFilter);
-  };
+   const handle_F_Status = (newFilter) => {
+      set_F_Status(newFilter);
+   };
 
-  const handle_AssignedTo = (newFilter) => {
-    setAssignTo(newFilter);
-  };
+   const handle_AssignedTo = (newFilter) => {
+      setAssignTo(newFilter);
+   };
 
-  const handleCondition = (e, id) => {
-    const body = {
-      _id: id,
-      condition: e.target.value,
-    };
-    axios
-      .post(
-        "http://localhost:3001/api/admin/housekeeping/task/changeCondition",
-        body
-      )
-      .then(() => fetchData());
-  };
+   const handleCondition = (e, id) => {
+      const body = {
+         _id: id,
+         condition: e.target.value,
+      };
+      axios.post('http://localhost:3001/api/admin/housekeeping/task/changeCondition', body).then(() => fetchData());
+   };
 
-  const handleAssignedTo = (e,id) => {
+   const handleAssignedTo = (e, id) => {};
 
-  }
-
-  const statesList = [
-    { state: R_Type, setState: handle_R_Type },
-    { state: R_Status, setState: handle_R_Status },
-    { state: R_Condition, setState: handle_R_Condition },
-    { state: F_Status, setState: handle_F_Status },
-    { state: AssignedTo, setState: handle_AssignedTo },
-  ];
+   const statesList = [
+      { state: R_Type, setState: handle_R_Type },
+      { state: R_Status, setState: handle_R_Status },
+      { state: R_Condition, setState: handle_R_Condition },
+      { state: F_Status, setState: handle_F_Status },
+      { state: AssignedTo, setState: handle_AssignedTo },
+   ];
 
   return (
     <>

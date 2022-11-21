@@ -6,30 +6,29 @@ import Table from './Table.jsx';
 import Button from '@mui/material/Button';
 
 const Reservation = () => {
-  const [filter1, setFilter1] = useState([]); // new or old guests
-  const [filter2, setFilter2] = useState([]); // home country of guests
-  const [filter3, setFilter3] = useState([]); // guest Status
-  const [filter4, setFilter4] = useState(); // guest check in date
-  const [filter5, setFilter5] = useState(); // guest check out date
+   const [filter1, setFilter1] = useState([]); // new or old guests
+   const [filter2, setFilter2] = useState([]); // home country of guests
+   const [filter3, setFilter3] = useState([]); // guest Status
+   const [filter4, setFilter4] = useState(); // guest check in date
+   const [filter5, setFilter5] = useState(); // guest check out date
 
   const [isAdding, setIsAdding] = useState(false); 
 
-
-  const handle_filter1 = (newFilter) => {
-    setFilter1(newFilter);
-  };
-  const handle_filter2 = (newFilter) => {
-    setFilter2(newFilter);
-  };
-  const handle_filter3 = (newFilter) => {
-    setFilter3(newFilter);
-  };
-  const handle_filter4 = (newFilter) => {
-    setFilter4(newFilter);
-  };
-  const handle_filter5 = (newFilter) => {
-    setFilter5(newFilter);
-  };
+   const handle_filter1 = (newFilter) => {
+      setFilter1(newFilter);
+   };
+   const handle_filter2 = (newFilter) => {
+      setFilter2(newFilter);
+   };
+   const handle_filter3 = (newFilter) => {
+      setFilter3(newFilter);
+   };
+   const handle_filter4 = (newFilter) => {
+      setFilter4(newFilter);
+   };
+   const handle_filter5 = (newFilter) => {
+      setFilter5(newFilter);
+   };
 
   const handleClear = () => {
     setFilter1([]);

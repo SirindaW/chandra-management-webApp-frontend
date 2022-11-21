@@ -100,7 +100,6 @@ const Table = ({tableName,header,data}) => {
           )
           }
       </div>
-      
-    );
-}
+   );
+};
 export default Table;
