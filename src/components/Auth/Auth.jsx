@@ -17,14 +17,12 @@ const Auth = () => {
    const navigate = useNavigate();
    const [showPassword, setShowPassword] = useState(false);
    const [formData, setFormData] = useState(initialState);
-   const [errMsg, setErrMsg] = useState('');
 
    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      const { message } = await dispatch(signin(formData, navigate));
-      setErrMsg(message);
+      await dispatch(signin(formData, navigate));
    };
 
    const handleChange = (e) => {
@@ -64,7 +62,6 @@ const Auth = () => {
                               }}
                            />
                         </div>
-                        <div className="text-right text-[14px] text-red-600 mt-2">{errMsg}</div>
                      </div>
                      <div className="mt-5 w-full flex justify-end">
                         <div className="mr-10 w-[130px]">

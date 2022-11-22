@@ -48,11 +48,11 @@ const CalendarDashboard = () => {
             </div>
             <div>
               <div className="text-[32px] text-secondary">{"23.54 %"}</div>
-              <div>{"14 DAY OCCUPANCY"}</div>
+              <div>{"14 DAY  REVENUE"}</div>
             </div>
           </div>
 
-          {isPageClicked.avail && <div className="flex justify-start p-4">MonthPicker</div>}
+          {isPageClicked.avail && <div className="flex justify-start p-4"></div>}
         </div>
 
         <div className="flex justify-start items-center mx-4 border-b-[3px] border-b-lightGray">

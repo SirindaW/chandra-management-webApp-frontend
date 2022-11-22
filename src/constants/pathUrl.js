@@ -5,3 +5,4 @@ export const reservationUrl = '/reservation';
 export const housekeepUrl = '/housekeeping';
 export const guestsUrl = '/guests';
 export const ratesUrl = '/rates';
+export const eventUrl = '/events';

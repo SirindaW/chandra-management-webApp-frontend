@@ -1,30 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FilterBox } from '../Filterbox/FilterBox.jsx';
 import { tableHeaderList_Accommodation, guestsDetailDataMockUp } from '../../constants/text';
 import AddNewReservation from './AddNewReservation.jsx';
 import Table from './Table.jsx';
 import Button from '@mui/material/Button';
+import { getBookings } from '../../actions/bookings.js';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Reservation = () => {
    const initialFilterState = { type: [], country: [], status: [], checkIn: '', checkOut: '' };
-   const initialState = {
-      prefix: '',
-      fname: '',
-      lname: '',
-      email: '',
-      phone: '',
-      address: '',
-      addition: '',
-      guest: { adult: 0, child: 0 },
-      checkIn_date: '',
-      checkOut_date: '',
-      breakfast: null,
-      roomType: { type: '', title: '', price: 0 },
-   };
+   const dispatch = useDispatch();
+   const { bookings } = useSelector((state) => state.bookings);
 
    const [isAdding, setIsAdding] = useState(false);
    const [filter, setFilter] = useState(initialFilterState);
-   const [bookingData, setBookingData] = useState(initialState);
 
    const handleAdd = () => {
       setIsAdding(true);
@@ -32,6 +21,10 @@ const Reservation = () => {
    const handleCancel = () => {
       setIsAdding(false);
    };
+
+   useEffect(() => {
+      dispatch(getBookings());
+   }, []);
 
    return (
       <div className="py-10 px-20 w-full">
@@ -43,7 +36,7 @@ const Reservation = () => {
                   </Button>
                </div>
                <FilterBox filter={filter} setFilter={setFilter} initialState={initialFilterState} />
-               <Table tableName="Reservation" header={tableHeaderList_Accommodation} data={guestsDetailDataMockUp} />
+               <Table tableName="Reservation" header={tableHeaderList_Accommodation} data={bookings} />
             </>
          )}
 
@@ -54,7 +47,7 @@ const Reservation = () => {
                      CANCEL
                   </Button>
                </div>
-               <AddNewReservation setIsAdding={setIsAdding} bookingData={bookingData} setBookingData={setBookingData} />
+               <AddNewReservation setIsAdding={setIsAdding} />
             </>
          )}
       </div>

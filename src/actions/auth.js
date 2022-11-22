@@ -1,16 +1,24 @@
 import * as api from '../api';
-import { AUTH } from '../constants/actionTypes';
+import { authUrl, dashboardUrl } from '../constants/pathUrl';
+import { AUTH, LOGOUT } from '../constants/actionTypes';
 
 export const signin = (formData, navigate) => async (dispatch) => {
    try {
-      //   const { data } = await api.signIn(formData);
+      const { data } = await api.signIn(formData);
 
-      //   dispatch({ type: AUTH, data });
+      dispatch({ type: AUTH, data });
 
-      navigate.push('/');
+      navigate(dashboardUrl);
    } catch (error) {
-      const errMessage = error.response.data;
-      console.log(errMessage.cause);
-      return errMessage;
+      console.log(error);
+   }
+};
+
+export const logout = (navigate) => async (dispatch) => {
+   try {
+      dispatch({ type: LOGOUT });
+      navigate(authUrl);
+   } catch (error) {
+      console.log(error);
    }
 };

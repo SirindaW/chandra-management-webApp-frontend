@@ -11,3 +11,11 @@ export const LOGOUT = 'LOGOUT';
 
 export const CLOSE = 'CLOSE';
 export const SWITCH = 'SWITCH';
+
+export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const FETCH_EVENT = 'FETCH_EVENT';
+
+export const FETCH_BOOKING = 'FETCH_BOOKING';
+export const CHANGE_BOOKING_STATUS = 'CHANGE_BOOKING_STATUS';
+
+export const FETCH_GUEST = 'FETCH_GUEST';
