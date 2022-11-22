@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, Fragment } from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -14,8 +14,8 @@ import NoteDetail from './NoteDetail';
 
 function SplitButton({ setGuestStatus }) {
    const guestStatusList = ['Confirmed', 'Cancelled', 'Stayover', 'Checked Out'];
-   const [open, setOpen] = React.useState(false);
-   const anchorRef = React.useRef(null);
+   const [open, setOpen] = useState(false);
+   const anchorRef = useRef(null);
    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
    const handleClick = () => {
@@ -41,7 +41,7 @@ function SplitButton({ setGuestStatus }) {
    };
 
    return (
-      <React.Fragment>
+      <Fragment>
          <ButtonGroup variant="contained" ref={anchorRef} aria-label="split button">
             <Button onClick={handleClick}>SELECT GUEST STATUS</Button>
             <Button
@@ -86,22 +86,25 @@ function SplitButton({ setGuestStatus }) {
                </Grow>
             )}
          </Popper>
-      </React.Fragment>
+      </Fragment>
    );
 }
 
-const GuestsDetail = ({ guestName, guestStatus, setGuestStatus }) => {
-   // const [name,setName] = useState(guestName);
+const GuestsDetail = ({ guestId }) => {
+   const guest = guestMainDataMockUp.filter((g) => g._id === guestId)[0];
+   console.log(guest);
    const [page, setPage] = useState('Accommodation');
    return (
       <>
-         <div className="flex md:flex-row xs:flex-col justify-between  py-2 mx-2 my-5 inner-border inner-border-slate-500 rounded-lg">
+         <div className="flex md:flex-row xs:flex-col justify-between  py-2 my-5 border-t-2 border-primary/20">
             <div className="ml-10">
-               <h1 className="text-lg uppercase">{guestName}</h1>
-               <h3 className="text-m text-slate-700">#12345678</h3>
+               <h1 className="text-lg uppercase font-bold">
+                  {guest.fname} {guest.lname}
+               </h1>
+               <h3 className="text-m text-slate-700">#{guest._id}</h3>
             </div>
             <div className="mr-10 flex lg:flex-col lg:justify-center">
-               <SplitButton setGuestStatus={setGuestStatus} />
+               <SplitButton />
             </div>
          </div>
 

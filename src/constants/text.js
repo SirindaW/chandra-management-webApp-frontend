@@ -156,26 +156,26 @@ export const guestsDetailDataMockUp = [
 
 export const guestMainDataMockUp = [
    //for guest_main and specific_guest_detail and reservation table
-   // {
-   //     fname:"Jonh",
-   //     lname:"Doe",
-   //     email:"JohnDoe@gmail.com",
-   //     phone:"0234567891",
-   //     country:"USA",
-   //     attended:"Yes",
-   //     status:"Checked Out"
-   // },
-   // {
-   //     fname:"Somsri",
-   //     lname:"Thangdee",
-   //     email:"SomsriThangdee@gmail.com",
-   //     phone:"0298765432",
-   //     country:"Thailand",
-   //     attended:"No",
-   //     status:"Checked Out"
-   // }
-   ['Jonh', 'Doe', 'JohnDoe@gmail.com', '0234567891', 'USA', 'Yes', 'Checked Out'],
-   ['Somsri', 'Lee', 'SomsriLee@gmail.com', '0234567891', 'China', 'No', 'Confirmed'],
+   {
+      _id: '1',
+      fname: 'Jonh',
+      lname: 'Doe',
+      email: 'JohnDoe@gmail.com',
+      phone: '0234567891',
+      country: 'USA',
+      attended: true,
+      status: 'Checked Out',
+   },
+   {
+      _id: '2',
+      fname: 'Somsri',
+      lname: 'Thangdee',
+      email: 'SomsriThangdee@gmail.com',
+      phone: '0298765432',
+      country: 'Thailand',
+      attended: false,
+      status: 'Checked Out',
+   },
 ];
 //Reservation
 export const Display_Type_list = [

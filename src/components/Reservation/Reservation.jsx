@@ -6,10 +6,25 @@ import Table from './Table.jsx';
 import Button from '@mui/material/Button';
 
 const Reservation = () => {
-   const initialState = { type: [], country: [], status: [], checkIn: '', checkOut: '' };
+   const initialFilterState = { type: [], country: [], status: [], checkIn: '', checkOut: '' };
+   const initialState = {
+      prefix: '',
+      fname: '',
+      lname: '',
+      email: '',
+      phone: '',
+      address: '',
+      addition: '',
+      guest: { adult: 0, child: 0 },
+      checkIn_date: '',
+      checkOut_date: '',
+      breakfast: null,
+      roomType: { type: '', title: '', price: 0 },
+   };
 
    const [isAdding, setIsAdding] = useState(false);
-   const [filter, setFilter] = useState(initialState);
+   const [filter, setFilter] = useState(initialFilterState);
+   const [bookingData, setBookingData] = useState(initialState);
 
    const handleAdd = () => {
       setIsAdding(true);
@@ -27,7 +42,7 @@ const Reservation = () => {
                      CREATE NEW RESERVATION
                   </Button>
                </div>
-               <FilterBox filter={filter} setFilter={setFilter} initialState={initialState} />
+               <FilterBox filter={filter} setFilter={setFilter} initialState={initialFilterState} />
                <Table tableName="Reservation" header={tableHeaderList_Accommodation} data={guestsDetailDataMockUp} />
             </>
          )}
@@ -39,7 +54,7 @@ const Reservation = () => {
                      CANCEL
                   </Button>
                </div>
-               <AddNewReservation setIsAdding={setIsAdding} />
+               <AddNewReservation setIsAdding={setIsAdding} bookingData={bookingData} setBookingData={setBookingData} />
             </>
          )}
       </div>

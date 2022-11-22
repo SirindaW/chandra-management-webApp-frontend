@@ -3,38 +3,23 @@ import GuestsMain from './GuestsMain.jsx';
 import GuestsDetail from './GuestsDetail.jsx';
 
 const Guests = () => {
-   // const pageList = ["GuestsMain", "GuestsDetail"];
-   const guestName = 'guestName';
-   // const [guestName,setGuestName] = useState("Guest Name");
-   const [guestStatus, setGuestStatus] = useState('Guest Status');
+   const [guestId, setGuestId] = useState('');
    const [page, setPage] = useState('GuestsMain');
    return (
       <>
-         {/* {guestName},{guestStatus} */}
          <div className="flex flex-row justify-between mt-5 mx-10">
-            <div>
-               {page === 'GuestsMain' ? (
-                  <button
-                     className="bg-secondary"
-                     onClick={() => {
-                        setPage('GuestsDetail');
-                     }}
-                  >
-                     see detail
-                  </button>
-               ) : (
-                  <button
-                     className="bg-secondary"
-                     onClick={() => {
-                        setPage('GuestsMain');
-                     }}
-                  >
-                     go back
-                  </button>
-               )}
-            </div>
+            {page === 'GuestsDetail' && (
+               <button
+                  className="bg-secondary px-5 py-2 text-white rounded-xl hover:bg-primary transition-all"
+                  onClick={() => {
+                     setPage('GuestsMain');
+                  }}
+               >
+                  ◄ BACK TO GUEST LISTS
+               </button>
+            )}
          </div>
-         {page === 'GuestsMain' ? <GuestsMain /> : <GuestsDetail guestName={guestName} guestStatus={guestStatus} setGuestStatus={setGuestStatus} />}
+         {page === 'GuestsMain' ? <GuestsMain setPage={setPage} setGuestId={setGuestId} /> : <GuestsDetail guestId={guestId} />}
       </>
    );
 };

@@ -1,5 +1,11 @@
 import React from 'react';
-const GreyBox = ({ parentName, header, data }) => {
+import { Link } from 'react-router-dom';
+const GreyBox = ({ setGuestId, header, data, setPage }) => {
+   const handleToDetail = (id) => {
+      setPage('GuestsDetail');
+      setGuestId(id);
+   };
+
    return (
       <>
          <table className="w-full table-auto bg-white overflow-scroll">
@@ -13,15 +19,15 @@ const GreyBox = ({ parentName, header, data }) => {
                </tr>
             </thead>
             <tbody>
-               {data.map((d, idx) => (
-                  <tr key={idx} className="text-center hover:cursor-pointer">
-                     {d.map((v, index) => (
-                        <td key={index} className="h-[65px] border-b border-gray-200">
-                           {v}
-                        </td>
-                     ))}
-
-                     {/* <td className="h-[65px]">comments</td> */}
+               {data.map((d) => (
+                  <tr key={d._id} className="text-center cursor-pointer hover:bg-primary/5 transition-all" onClick={() => handleToDetail(d._id)}>
+                     <td className="h-[65px] border-b border-gray-200">{d.fname}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.lname}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.email}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.phone}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.country}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.attended ? 'Yes' : 'No'}</td>
+                     <td className="h-[65px] border-b border-gray-200">{d.status}</td>
                   </tr>
                ))}
             </tbody>

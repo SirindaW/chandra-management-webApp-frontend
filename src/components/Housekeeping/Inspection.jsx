@@ -5,7 +5,7 @@ import FilterBox from './FilterBox';
 import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { CheckBox} from '@mui/icons-material';
+import { CheckBox } from '@mui/icons-material';
 import { BiCommentEdit } from 'react-icons/bi';
 import moment from 'moment';
 
@@ -68,38 +68,38 @@ const Inspection = () => {
    };
 
    const handleAssignedTo = (e, id) => {
-    const body = {taskId: id, employeeId: e.target.value}
-    axios.post('http://localhost:3001/api/admin/housekeeping/task/changeAssignedTo',body).then(()=>fetchData());
+      const body = { taskId: id, employeeId: e.target.value };
+      axios.post('http://localhost:3001/api/admin/housekeeping/task/changeAssignedTo', body).then(() => fetchData());
    };
 
-   const handleDoNotDisturb = (task) =>{
-    const body = {taskId: task._id, doNotDisturb: !task.doNotDisturb};
-    axios.post('http://localhost:3001/api/admin/housekeeping/task/changeDoNotDisturb',body).then(()=>fetchData());
-   }
+   const handleDoNotDisturb = (task) => {
+      const body = { taskId: task._id, doNotDisturb: !task.doNotDisturb };
+      axios.post('http://localhost:3001/api/admin/housekeeping/task/changeDoNotDisturb', body).then(() => fetchData());
+   };
 
-   const handleFilter =() => {
-    let path = 'http://localhost:3001/api/admin/housekeeping/tasks/filter'
-    let param = [];
+   const handleFilter = () => {
+      let path = 'http://localhost:3001/api/admin/housekeeping/tasks/filter';
+      let param = [];
 
-    R_Type.forEach((el)=> param.push(`type=${el.value}`));
-    R_Status.forEach((el)=> param.push(`roomStatus=${el.value}`));
-    R_Condition.forEach((el)=> param.push(`condition=${el.value}`));
-    F_Status.forEach((el)=> param.push(`frontdeskStatus=${el.value}`));
-    AssignedTo.forEach((el)=> param.push(`employeeId=${el.value}`));
-    
-    param.forEach((p,i)=> i === 0 ? path += `?${p}`: path += `&${p}`);
-    axios.get(path).then((r)=> {
-      setTasks(r.data)
-    });
-   } 
+      R_Type.forEach((el) => param.push(`type=${el.value}`));
+      R_Status.forEach((el) => param.push(`roomStatus=${el.value}`));
+      R_Condition.forEach((el) => param.push(`condition=${el.value}`));
+      F_Status.forEach((el) => param.push(`frontdeskStatus=${el.value}`));
+      AssignedTo.forEach((el) => param.push(`employeeId=${el.value}`));
 
-   const handleClear= () => {
-    set_R_Type([])
-    set_R_Status([])
-    set_R_Condition([])
-    set_F_Status([])
-    setAssignTo([])
-   }
+      param.forEach((p, i) => (i === 0 ? (path += `?${p}`) : (path += `&${p}`)));
+      axios.get(path).then((r) => {
+         setTasks(r.data);
+      });
+   };
+
+   const handleClear = () => {
+      set_R_Type([]);
+      set_R_Status([]);
+      set_R_Condition([]);
+      set_F_Status([]);
+      setAssignTo([]);
+   };
 
    const statesList = [
       { state: R_Type, setState: handle_R_Type },
@@ -113,7 +113,7 @@ const Inspection = () => {
 
    return (
       <>
-        <FilterBox states={statesList} hk={hkList} onApply={handleFilter} onClear={handleClear} />
+         <FilterBox states={statesList} hk={hkList} onApply={handleFilter} onClear={handleClear} />
          <div className="flex flex-col justify-start item mx-[2rem] bg-secondary rounded-[8px] min-h-[588px] border border-[1px] border-primaryfade shadow-lg mb-[110px]">
             <div className="font-extrabold text-[20px] p-[1rem] text-white">Inspection</div>
             <div className="w-full h-full flex-1 bg-white">
@@ -172,7 +172,12 @@ const Inspection = () => {
                                    </div>
                                 </td>
                                 <td>
-                                  <input className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-50 focus:ring-2 " type="checkbox" checked={task.doNotDisturb} onClick={()=>handleDoNotDisturb(task)}/>
+                                   <input
+                                      className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-50 focus:ring-2 "
+                                      type="checkbox"
+                                      checked={task.doNotDisturb}
+                                      onClick={() => handleDoNotDisturb(task)}
+                                   />
                                 </td>
                                 <td>
                                    <div className="flex justify-center items-center">

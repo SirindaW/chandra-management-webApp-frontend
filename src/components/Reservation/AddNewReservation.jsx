@@ -36,7 +36,7 @@ export function HorizontalLabelPositionBelowStepper({ step }) {
    );
 }
 
-export const AddNewReservation = ({ isAdding, setIsAdding }) => {
+export const AddNewReservation = ({ isAdding, setIsAdding, bookingData, setBookingData }) => {
    const [checkInDate, setCheckInDate] = useState('');
    const [checkOutDate, setCheckOutDate] = useState('');
    const [selectedDisplay, setSelectedDisplay] = useState([]);
