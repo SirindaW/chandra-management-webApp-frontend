@@ -54,7 +54,7 @@ const ActivityInfo = () => {
    }
 
    return (
-      <div className="flex flex-col w-[600px] h-[600px] bg-secondary rounded-lg shadow-xl overflow-y-auto">
+      <div className="flex flex-col flex-1 h-[600px] bg-secondary rounded-lg shadow-xl overflow-y-auto">
          <div className="p-2 text-[#fff] text-[18px] font-bold flex justify-between items-center">
             <div>TODAY&apos;S ACTIVITY</div>
             <div className="flex gap-4">
