@@ -2,60 +2,17 @@ import React, { useState } from 'react';
 import { TfiReload } from 'react-icons/tfi';
 import { AiFillPrinter, AiOutlineSearch } from 'react-icons/ai';
 import { Button, TextField, InputAdornment } from '@mui/material';
-import { MdEditNote } from 'react-icons/md';
-import { GiExitDoor } from 'react-icons/gi';
-import ResvTable from './ResvTable';
-import { table } from '../../constants/text';
+import EventTable from './EventTable';
 
-const defaultRESV = {
-   currentPage: '',
-   arrivals: false,
-   departures: false,
-   stayovers: false,
-};
-
-const ReservationInfo = () => {
-   const [isToday, setIsToday] = useState(true);
+const Event = () => {
    const [inputText, setInputText] = useState('');
-   const [isRESVClicked, setIsRESVClicked] = useState({
-      ...defaultRESV,
-      arrivals: true,
-      currentPage: 'arrivals',
-   });
-   const pageActive = 'bg-gray-100';
-
-   const RESV_pages = [
-      {
-         title: 'Arrivals',
-         onClick: () => {
-            handlePageClick_RESV('arrivals');
-         },
-      },
-      {
-         title: 'Departures',
-         onClick: () => {
-            handlePageClick_RESV('departures');
-         },
-      },
-      {
-         title: 'Stayovers',
-         onClick: () => {
-            handlePageClick_RESV('stayovers');
-         },
-      },
-   ];
-
-   const handlePageClick_RESV = (page) => {
-      setIsRESVClicked({ ...defaultRESV, [page]: true, currentPage: page });
-   };
-
    const handleSearch = (e) => {
       e.preventDefault();
       setInputText('');
    };
 
    return (
-      <div className="flex flex-col flex-1 h-[600px] bg-secondary rounded-lg shadow-xl overflow-y-auto">
+      <div className="flex flex-col flex-1 h-[500px] bg-secondary rounded-lg shadow-xl overflow-y-auto">
          <div className="p-2 text-[#fff] text-[18px] font-bold flex justify-between items-center">
             <div>RESERVATION</div>
             <div className="flex gap-4">
@@ -89,10 +46,10 @@ const ReservationInfo = () => {
                   </form>
                </div>
             </div>
-            <ResvTable table={table} today={isToday} page={isRESVClicked.currentPage} nameFilter={inputText} />
+            <EventTable data={[]}/>
          </div>
       </div>
    );
 };
 
-export default ReservationInfo;
+export default Event;

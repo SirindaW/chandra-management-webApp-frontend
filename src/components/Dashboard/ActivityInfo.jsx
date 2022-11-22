@@ -64,13 +64,6 @@ const ActivityInfo = () => {
             </div>
          </div>
          <div className="flex-1 bg-white p-2">
-            <div className="w-full bg-lightGray flex justify-start items-center">
-               {ACTI_pages.map((page, index) => (
-                  <div key={index} className={`flex justify-start items-center h-[40px] ${isACTIClicked[page.title.toLowerCase()] && pageActive}`}>
-                     <Button onClick={page.onClick}>{page.title}</Button>
-                  </div>
-               ))}
-            </div>
             <div className="flex justify-center border-b border-b-lightGray border-b-[2px]flex justify-between items-center py-[0.65rem]">
                <div className="flex flex-col p-2 ">
                   <div className="text-[20px] text-secondary">{totalBooked}</div>
