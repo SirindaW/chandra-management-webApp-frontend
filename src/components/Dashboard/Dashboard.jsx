@@ -2,6 +2,7 @@ import React from 'react';
 import ReservationInfo from './ReservationInfo';
 import ActivityInfo from './ActivityInfo';
 import CalendarDashboard from './CalendarDashboard';
+import Event from './Event';
 
 const StatBox = ({ title, number, styleContainer, styleNumber, styleTitle, startAdornment }) => {
    return (
@@ -24,6 +25,11 @@ const Home = () => {
             <ReservationInfo />
             <ActivityInfo />
          </div>
+
+         <div className="flex justify-start mx-[8rem] gap-[2rem] mt-8">
+            <Event/>
+         </div>
+
          <div className="flex justify-start mx-[8rem] gap-[2rem] mt-8">
             <CalendarDashboard />
          </div>
