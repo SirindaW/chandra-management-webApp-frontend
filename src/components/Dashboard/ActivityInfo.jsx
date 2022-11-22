@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TfiReload } from 'react-icons/tfi';
 import { Button } from '@mui/material';
 import { MdEditNote } from 'react-icons/md';
-import { table2 } from '../../../constants/text';
+import { table2 } from '../../constants/text';
 import ActiTable from './ActiTable';
 
 const defaultACTI = {

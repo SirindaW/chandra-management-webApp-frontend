@@ -5,7 +5,7 @@ import { Button, TextField, InputAdornment } from "@mui/material";
 import { MdEditNote } from "react-icons/md";
 import { GiExitDoor } from "react-icons/gi";
 import ResvTable from "./ResvTable";
-import {table} from '../../../constants/text'
+import {table} from '../../constants/text'
 
 const defaultRESV = {
   currentPage: '',

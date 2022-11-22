@@ -1,7 +1,7 @@
 import React from "react";
-import ReservationInfo from "./infobox/ReservationInfo";
-import ActivityInfo from "./infobox/ActivityInfo";
-import CalendarDashboard from "./infobox/CalendarDashboard";
+import ReservationInfo from "./ReservationInfo";
+import ActivityInfo from "./ActivityInfo";
+import CalendarDashboard from "./CalendarDashboard";
 
 const StatBox = ({
   title,
