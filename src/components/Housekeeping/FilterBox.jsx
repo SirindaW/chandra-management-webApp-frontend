@@ -4,20 +4,19 @@ import { MultiSelect } from 'react-multi-select-component';
 import { filterSelect } from '../../constants/text';
 import { CircularProgress } from '@mui/material';
 
-const FilterBox = ({ states, hk, isLoading }) => {
-   console.log(states, hk, isLoading);
+const FilterBox = ({ states, hk, isLoading, onApply, onClear }) => {
 
    const AS_OPTIONS = {
       label: 'Assigned to',
       options: hk.map((h) => {
-         return { label: h.fname, value: h.fname };
+         return { label: h.fname, value: h._id };
       }),
    };
 
    return (
       /* Filter box*/
-      <div className="flex flex-col m-[2rem] rounded-[8px] bg-[#D9D9D9] border-[1px] border-primaryfade shadow-lg">
-         <div className="p-[1rem] font-[15px] uppercase">Filter</div>
+      <div className="flex flex-col min-h-[207px] m-[2rem] rounded-[8px] bg-[#D9D9D9] border-[1px] border-primaryfade shadow-lg">
+         <div className="p-[1rem] font-[15px] uppercase flex-1">Filter</div>
          {isLoading && <CircularProgress />}
          {!isLoading && (
             <div className="p-[1rem] flex gap-[1rem] bg-white">
@@ -35,8 +34,8 @@ const FilterBox = ({ states, hk, isLoading }) => {
          )}
 
          <div className="flex justify-end items-center p-[0.5rem] gap-[1rem]">
-            <Button variant="contained">Apply</Button>
-            <Button variant="contained">Clear</Button>
+            <Button variant="contained" onClick={onApply}>Apply</Button>
+            <Button variant="contained" onClick={onClear}>Clear</Button>
          </div>
       </div>
    );
