@@ -4,8 +4,8 @@ import { eventDataMockUp } from '../constants/text';
 
 export const getEvents = () => async (dispatch) => {
    try {
-      //   const { data } = await api.fetchEvents();
-      const data = eventDataMockUp;
+      const { data } = await api.fetchEvents();
+      //   const data = eventDataMockUp;
 
       dispatch({ type: FETCH_EVENT, payload: data });
    } catch (error) {

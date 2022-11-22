@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.jsx';
@@ -11,26 +11,34 @@ import Housekeeping from './components/Housekeeping/Housekeeping.jsx';
 import Guests from './components/Guests/Guests.jsx';
 
 import { authUrl, dashboardUrl, eventUrl, reservationUrl, housekeepUrl, guestsUrl } from './constants/pathUrl.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { AUTH } from './constants/actionTypes.js';
 
 const App = () => {
-   // const user = JSON.parse(localStorage.getItem('user'));
-   const user = true;
-   const IsLogin = ({ comp }) => (user ? comp : <Navigate to={authUrl} replace />);
+   const dispatch = useDispatch();
+   const { authData } = useSelector((state) => state.auth);
+   const user = JSON.parse(localStorage.getItem('user'));
+   const IsLogin = ({ comp }) => (authData ? comp : <Navigate to={authUrl} replace />);
 
+   useEffect(() => {
+      if (!authData) {
+         dispatch({ type: AUTH, data: user });
+      }
+   }, [authData]);
    return (
       <BrowserRouter>
          <div className="w-full flex">
-            {user && <Sidebar />}
+            {authData && <Sidebar />}
             <div className="w-full">
-               {user && <Navbar />}
+               {authData && <Navbar />}
                <Routes>
-                  <Route path={authUrl} exact element={!user ? <Auth /> : <Navigate to={dashboardUrl} replace />} />
+                  <Route path={authUrl} exact element={<Auth />} />
 
-                  <Route path={dashboardUrl} exact element={<IsLogin comp={<Dashboard />} />} />
-                  <Route path={reservationUrl} exact element={<IsLogin comp={<Reservation />} />} />
-                  <Route path={eventUrl} exact element={<IsLogin comp={<Event />} />} />
-                  <Route path={housekeepUrl} exact element={<IsLogin comp={<Housekeeping />} />} />
-                  <Route path={guestsUrl} exact element={<IsLogin comp={<Guests />} />} />
+                  <Route path={dashboardUrl} exact element={<Dashboard />} />
+                  <Route path={reservationUrl} exact element={<Reservation />} />
+                  <Route path={eventUrl} exact element={<Event />} />
+                  <Route path={housekeepUrl} exact element={<Housekeeping />} />
+                  <Route path={guestsUrl} exact element={<Guests />} />
 
                   <Route path="*" element={<IsLogin comp={<Navigate to={dashboardUrl} replace />} />} />
                </Routes>

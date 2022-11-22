@@ -1,6 +1,6 @@
 import { CHANGE_STATUS, FETCH_EVENT } from '../constants/actionTypes';
 
-const authReducer = (state = { events: [] }, action) => {
+const events = (state = { events: [] }, action) => {
    switch (action.type) {
       case FETCH_EVENT:
          return { ...state, events: action.payload };
@@ -11,4 +11,4 @@ const authReducer = (state = { events: [] }, action) => {
    }
 };
 
-export default authReducer;
+export default events;

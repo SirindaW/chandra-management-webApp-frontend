@@ -132,8 +132,8 @@ export const tableHeaderList_Accommodation = [
    'ARRIVAL',
    'DEPARTURE',
    'GUEST(S)',
-   'NIGHT(S)',
    'TOTAL',
+   'STATUS',
 ];
 export const tableHeaderList_specific_Guest_detail = [
    // header for guest_main and specific_guest_detail and reservation table
@@ -143,7 +143,6 @@ export const tableHeaderList_specific_Guest_detail = [
    'PHONE',
    'COUNTRY',
    'ATTENDED GUEST',
-   'GUEST STATUS',
 ];
 
 export const guestsDetailDataMockUp = [
@@ -183,7 +182,6 @@ export const guestMainDataMockUp = [
       phone: '0234567891',
       country: 'USA',
       attended: true,
-      status: 'Checked Out',
    },
    {
       _id: '2',
@@ -193,7 +191,6 @@ export const guestMainDataMockUp = [
       phone: '0298765432',
       country: 'Thailand',
       attended: false,
-      status: 'Checked Out',
    },
 ];
 

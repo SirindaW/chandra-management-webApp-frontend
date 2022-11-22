@@ -1,16 +1,13 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
-
-// add token to header in every request
-API.interceptors.request.use((req) => {
-   if (localStorage.getItem('user')) {
-      req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
-   }
-   return req;
-});
+const API = axios.create({ baseURL: 'http://localhost:3001' });
 
 export const signIn = (formData) => API.post('/api/admin/employee/login', formData);
 
 export const fetchEvents = () => API.get('/api/admin/reservation/event');
 export const updateEventStatus = (data) => API.post('', data);
+
+export const fetchBookings = () => API.get('/api/admin/reservation');
+export const updateBookingStatus = (data) => API.post('api/admin/reservation/change_status', data);
+
+export const fetchGuests = () => API.get('api/admin/allguest');

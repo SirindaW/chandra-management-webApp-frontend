@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 const GreyBox = ({ setGuestId, header, data, setPage }) => {
    const handleToDetail = (id) => {
       setPage('GuestsDetail');

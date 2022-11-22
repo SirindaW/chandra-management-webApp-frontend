@@ -5,13 +5,22 @@ import { AiOutlineMenu } from 'react-icons/ai';
 // import muiStyles from "./muiStyles";
 import { useDispatch, useSelector } from 'react-redux';
 import { CLOSE, SWITCH } from '../../constants/actionTypes.js';
+import { logout } from '../../actions/auth.js';
+import { useNavigate } from 'react-router-dom';
 
 // import styles from "./styles";
 
 const Navbar = () => {
+   const navigate = useNavigate();
+   const user = JSON.parse(localStorage.getItem('user')) || '';
    const { isMenu } = useSelector((state) => state.menu);
+
    const dispatch = useDispatch();
    const today = new Date();
+
+   const handleLogout = async () => {
+      await dispatch(logout(navigate));
+   };
 
    useEffect(() => {
       if (window.innerWidth <= 900) {
@@ -30,7 +39,14 @@ const Navbar = () => {
             </div>
             <div className="text-2xl font-bold ml-5">{today.toDateString()}</div>
          </div>
-         <div></div>
+         <div>
+            <span className="font-bold text-xl mr-8">
+               {user?.fname} {user?.lname}
+            </span>
+            <button onClick={handleLogout} className="bg-secondary rounded-xl px-5 py-2 text-white font-bold shadow-md hover:bg-primary/90 transition-all">
+               LOG OUT
+            </button>
+         </div>
       </div>
    );
 };
