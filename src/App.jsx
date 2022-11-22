@@ -15,15 +15,14 @@ import { authUrl, dashboardUrl, calendarUrl, reservationUrl, housekeepUrl, guest
 const App = () => {
    // const user = JSON.parse(localStorage.getItem('user'));
    const user = true;
-   const [activeMenu, setActiveMenu] = useState(true);
    const IsLogin = ({ comp }) => (user ? comp : <Navigate to={authUrl} replace />);
 
    return (
       <BrowserRouter>
          <div className="w-full flex">
-            {user && activeMenu && <Sidebar />}
+            {user && <Sidebar />}
             <div className="w-full">
-               {user && <Navbar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />}
+               {user && <Navbar />}
                <Routes>
                   <Route path={authUrl} exact element={!user ? <Auth /> : <Navigate to={dashboardUrl} replace />} />
 
