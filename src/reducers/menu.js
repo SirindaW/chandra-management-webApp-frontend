@@ -1,4 +1,4 @@
-import { OPEN, CLOSE, SWITCH } from '../constants/actionTypes';
+import { CLOSE, SWITCH } from '../constants/actionTypes';
 
 const menuReducer = (state = { isMenu: true }, action) => {
    switch (action.type) {
