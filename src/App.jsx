@@ -5,12 +5,12 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
 import Auth from './components/Auth/Auth.jsx';
 import Dashboard from './components/Dashboard/Dashboard.jsx';
-import Calendar from './components/Calendar/Calendar.jsx';
+import Event from './components/Event/Event.jsx';
 import Reservation from './components/Reservation/Reservation.jsx';
 import Housekeeping from './components/Housekeeping/Housekeeping.jsx';
 import Guests from './components/Guests/Guests.jsx';
 
-import { authUrl, dashboardUrl, calendarUrl, reservationUrl, housekeepUrl, guestsUrl } from './constants/pathUrl.js';
+import { authUrl, dashboardUrl, eventUrl, reservationUrl, housekeepUrl, guestsUrl } from './constants/pathUrl.js';
 
 const App = () => {
    // const user = JSON.parse(localStorage.getItem('user'));
@@ -27,8 +27,8 @@ const App = () => {
                   <Route path={authUrl} exact element={!user ? <Auth /> : <Navigate to={dashboardUrl} replace />} />
 
                   <Route path={dashboardUrl} exact element={<IsLogin comp={<Dashboard />} />} />
-                  <Route path={calendarUrl} exact element={<IsLogin comp={<Calendar />} />} />
                   <Route path={reservationUrl} exact element={<IsLogin comp={<Reservation />} />} />
+                  <Route path={eventUrl} exact element={<IsLogin comp={<Event />} />} />
                   <Route path={housekeepUrl} exact element={<IsLogin comp={<Housekeeping />} />} />
                   <Route path={guestsUrl} exact element={<IsLogin comp={<Guests />} />} />
 

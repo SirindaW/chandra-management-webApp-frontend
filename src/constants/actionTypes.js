@@ -11,3 +11,6 @@ export const LOGOUT = 'LOGOUT';
 
 export const CLOSE = 'CLOSE';
 export const SWITCH = 'SWITCH';
+
+export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const FETCH_EVENT = 'FETCH_EVENT';

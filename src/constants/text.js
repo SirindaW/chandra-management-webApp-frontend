@@ -1,11 +1,11 @@
-import { dashboardUrl, calendarUrl, reservationUrl, housekeepUrl, guestsUrl } from './pathUrl.js';
+import { dashboardUrl, eventUrl, reservationUrl, housekeepUrl, guestsUrl } from './pathUrl.js';
 
 import moment from 'moment';
 
 export const menu = [
    { title: 'Dashboard', path: `${dashboardUrl}` },
-   { title: 'Calendar', path: `${calendarUrl}` },
    { title: 'Reservation', path: `${reservationUrl}` },
+   { title: 'Event', path: `${eventUrl}` },
    { title: 'Housekeeping', path: `${housekeepUrl}` },
    { title: 'Guests', path: `${guestsUrl}` },
 ];
@@ -46,6 +46,13 @@ export const filterSelect = [
          { label: 'CHECK-OUT', value: 'checkOut' },
       ],
    },
+];
+
+export const bookingStatus = [
+   { label: 'Confirmed', value: 'Confirmed' },
+   { label: 'Cancelled', value: 'Cancelled' },
+   { label: 'Stayover', value: 'Stayover' },
+   { label: 'Checked Out', value: 'Checked Out' },
 ];
 
 export const tableHeaderList = ['ROOM', 'TYPE', 'CONDITION', 'ROOM STATUS', 'ARRIVAL DATE', 'DEPARTURE DATE', 'FRONTDESK STATUS', 'ASSIGNED TO', 'DO NOT DISTURB', 'COMMENTS'];
@@ -104,6 +111,18 @@ export const guestDetails = [
    },
 ];
 export const navList_specific_guest = ['Accommodation', 'Guest Datails', 'Notes'];
+
+export const tableHeaderList_Event = [
+   //header for guest_accomodation table
+   'RES ID',
+   'NAME',
+   'TYPE',
+   'PLACE',
+   'START',
+   'END',
+   'BUDGET (THB)',
+   'STATUS',
+];
 
 export const tableHeaderList_Accommodation = [
    //header for guest_accomodation table
@@ -177,6 +196,49 @@ export const guestMainDataMockUp = [
       status: 'Checked Out',
    },
 ];
+
+export const eventDataMockUp = [
+   //for guest_main and specific_guest_detail and reservation table
+   {
+      _id: '1',
+      prefix: 'Mr.',
+      fname: 'Chinakit',
+      lname: 'Pinclay',
+      phone: '0617385146',
+      email: 'chinnakitglock@gmail.com',
+      min_budget: 100000,
+      max_budget: 9999000,
+      company: 'ABC Co., Ltd.',
+      address: 'Bangladesh',
+      zip: '10520',
+      addition: 'nice hotel. :)',
+      start: '11/11/11',
+      end: '11/11/11',
+      type: 'Wedding',
+      place: 'Hall',
+      status: 'Confirmed',
+   },
+   {
+      _id: '2',
+      prefix: 'Mr.',
+      fname: 'Gung',
+      lname: 'Pinclay',
+      phone: '0617385146',
+      email: 'chinnakitglock@gmail.com',
+      min_budget: 100000,
+      max_budget: 50088000,
+      company: 'ABC Co., Ltd.',
+      address: 'Thailand',
+      zip: '10520',
+      addition: 'nice hotel. :)',
+      start: '11/11/11',
+      end: '11/11/11',
+      type: 'Social',
+      place: 'Yard',
+      status: 'Confirmed',
+   },
+];
+
 //Reservation
 export const Display_Type_list = [
    {
